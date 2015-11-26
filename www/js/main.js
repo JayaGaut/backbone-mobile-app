@@ -1,3 +1,22 @@
+require.config({
+  paths: {
+    jquery: 'js/libs/jquery/jquery.min',
+    underscore: 'js/libs/underscore/underscore.min',
+    backbone: 'js/libs/backbone/backbone.min'
+  }
+
+});
+
+require([
+
+  // Load our app module and pass it to our definition function
+  'app',
+], function(App){
+  // The "app" dependency is passed in as "App"
+  App.initialize();
+});
+
+/*
 var utils = {
     baseUrl: 'http://54.200.51.244:8080',
     headerTitle: '',
@@ -9,26 +28,6 @@ var utils = {
 	allCourses: []
 };
 
-var directory = {
-    views: {},
-    models: {},
-    loadTemplates: function (views, callback) {
-
-        var deferreds = [];
-
-        $.each(views, function (index, view) {
-            if (directory[view]) {
-                deferreds.push($.get('tpl/' + view + '.html', function (data) {
-                    directory[view].prototype.template = _.template(data);
-                }, 'html'));
-            } else {
-                alert(view + " not found");
-            }
-        });
-
-        $.when.apply(null, deferreds).done(callback);
-    }
-};
 
 directory.Router = Backbone.Router.extend({
 
@@ -55,8 +54,7 @@ directory.Router = Backbone.Router.extend({
 
    initialize: function () {
         directory.headerView = new directory.HeaderView();
-		/*alert('header');
-       $('.header').html(directory.headerView.render().el);*/
+       //$('.header').html(directory.headerView.render().el);
    },
   
    initUser: function () {
@@ -230,16 +228,6 @@ directory.Router = Backbone.Router.extend({
 
     },
 	
-
-    
 });
-
- $(document).on("ready", function () {
-     directory.loadTemplates(["HeaderView", "LoginView", "ProfileView", "PeopleFirstView", "PeopleProfileView", "MessageFirstView", "MessageSecondView", "MessageReplyView", "ChoosePeopleView", "CoursesView", "CourseDetailView", "MessageDeleteView", "CourseNotificationView", "AchievementView", "TeacherReportsView", "MenAcademyView", "AcademyDetailView", "DiscussionFirstView", "DiscussionSecondView"],
-    function () {
-        directory.router = new directory.Router();
-        //app = new Router();
-        Backbone.history.start();
-    });
-    
-  }); 
+*/
+ 
