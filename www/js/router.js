@@ -1,24 +1,31 @@
-app.Router = Backbone.Router.extend({
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'views/projects/list',
+  'views/users/list'
+], function($, _, Backbone, ProjectListView, UserListView){
+  var app.Router = Backbone.Router.extend({
 
     routes: {
-	    "": "login",
-	    "profile": "profile",
-	    "peoplefirst": "peoplefirst",
-	    "peopleprofile": "peopleprofile",
-	    "messagefirst": "messagefirst",
-	    "messagesecond": "messagesecond",
-	    "messagereply": "messagereply",
-	    "choosepeople": "choosepeople",
-	    "courses": "courses",
-	    "coursedetail/:id/:slot": "coursedetail",
-	    "coursenotification": "courseNotification",
-		"messagedelete": "messagedelete",
-		"achievement/:name": "achievement",
-		"teacherreports": "teacherReports",
-		"menacademy": "menAcademy",
-		"academydetail": "academyDetail",
-		"discussionfirst": "discussionFirst",
-		"discussionsecond": "discussionSecond"
+        "": "login",
+        "profile": "profile",
+        "peoplefirst": "peoplefirst",
+        "peopleprofile": "peopleprofile",
+        "messagefirst": "messagefirst",
+        "messagesecond": "messagesecond",
+        "messagereply": "messagereply",
+        "choosepeople": "choosepeople",
+        "courses": "courses",
+        "coursedetail/:id/:slot": "coursedetail",
+        "coursenotification": "courseNotification",
+        "messagedelete": "messagedelete",
+        "achievement/:name": "achievement",
+        "teacherreports": "teacherReports",
+        "menacademy": "menAcademy",
+        "academydetail": "academyDetail",
+        "discussionfirst": "discussionFirst",
+        "discussionsecond": "discussionSecond"
     },
 
    initialize: function () {
@@ -40,9 +47,9 @@ app.Router = Backbone.Router.extend({
     profile: function () {
         app.profileView = new app.ProfileView();
         app.profileView.render();
-		
-		app.headerView = new app.HeaderView();
-		app.headerView.render();
+        
+        app.headerView = new app.HeaderView();
+        app.headerView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.profileView.el);
@@ -70,9 +77,9 @@ app.Router = Backbone.Router.extend({
     messagefirst: function () {
         app.messagefirstView = new app.MessageFirstView();
         app.messagefirstView.render();
-		
-		app.headerView = new app.HeaderView();
-		app.headerView.render();
+        
+        app.headerView = new app.HeaderView();
+        app.headerView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.messagefirstView.el);
@@ -122,63 +129,63 @@ app.Router = Backbone.Router.extend({
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.coursedetailView.el);
-		app.coursedetailView.renderCourseDetail();
+        app.coursedetailView.renderCourseDetail();
 
     },
-	
-	 achievement: function (name) {
+    
+     achievement: function (name) {
         app.achievementView = new app.AchievementView();
-		app.achievementView.courseName = name;
+        app.achievementView.courseName = name;
         app.achievementView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.achievementView.el);
-		app.achievementView.renderChart(app.achievementView.tIdx);
+        app.achievementView.renderChart(app.achievementView.tIdx);
 
     },
-	
-	teacherReports: function () {
+    
+    teacherReports: function () {
         app.teacherReportsView = new app.TeacherReportsView();
         app.teacherReportsView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.teacherReportsView.el);
-		//app.achievementView.renderReports();
+        //app.achievementView.renderReports();
     },
-	
-	menAcademy: function () {
+    
+    menAcademy: function () {
         app.menAcademyView = new app.MenAcademyView();
         app.menAcademyView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.menAcademyView.el);
     },
-	
-	academyDetail: function () {
+    
+    academyDetail: function () {
         app.academyDetailView = new app.AcademyDetailView();
         app.academyDetailView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.academyDetailView.el);
     },
-	
-	discussionFirst: function () {
+    
+    discussionFirst: function () {
         app.discussionFirstView = new app.DiscussionFirstView();
         app.discussionFirstView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.discussionFirstView.el);
     },
-	
-	discussionSecond: function () {
+    
+    discussionSecond: function () {
         app.discussionSecondView = new app.DiscussionSecondView();
         app.discussionSecondView.render();
 
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.discussionSecondView.el);
     },
-	
-	messagedelete: function () {
+    
+    messagedelete: function () {
         app.messagedeleteView = new app.MessageDeleteView();
         app.messagedeleteView.render();
 
@@ -195,6 +202,5 @@ app.Router = Backbone.Router.extend({
         $('.header').html(app.headerView.render().el);
         $("#content").html(app.courseNotificationView.el);
 
-    },
-	
+    }
 });

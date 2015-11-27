@@ -5,7 +5,7 @@ directory.LoginView = Backbone.View.extend({
     },
 
     initialize: function () {
-
+        
     },
 
     login:function (event) {
