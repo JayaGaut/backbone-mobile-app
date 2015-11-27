@@ -1,4 +1,5 @@
 var app = app || {};
+
 var utils = {
     baseUrl: 'http://54.200.51.244:8080',
     headerTitle: '',
@@ -7,14 +8,14 @@ var utils = {
     idStudent: '',
     userName: '',
     courses: [],
-	allCourses: []
+	  allCourses: []
 };
 
 require.config({
   paths: {
-    jquery: 'js/libs/jquery/jquery.min',
-    underscore: 'js/libs/underscore.min',
-    backbone: 'js/libs/backbone.min'
+    jquery: 'libs/jquery/jquery.min',
+    underscore: 'libs/underscore.min',
+    backbone: 'libs/backbone.min'
   }
 
 });
