@@ -1,5 +1,3 @@
-var app = app || {};
-
 var utils = {
     baseUrl: 'http://54.200.51.244:8080',
     headerTitle: '',
@@ -14,7 +12,7 @@ var utils = {
 require.config({
   paths: {
     jquery: 'libs/jquery/jquery.min',
-    underscore: 'libs/underscore.min',
+    underscore: 'libs/underscore',
     backbone: 'libs/backbone.min'
   }
 
