@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'views/login'
-], function($, _, Backbone){
+], function($, _, Backbone, loginView){
 	  var app_router = Backbone.Router.extend({
 	
 			routes: {
@@ -12,10 +12,10 @@ define([
 		
 		   login: function () {
 			   
-				app.loginView = new app.LoginView();
-				app.loginView.render();
+				loginViewInst = new loginView();
+				loginViewInst.render();
 			   
-				$("#content").html(app.loginView.el);
+				$("#content").html(loginViewInst.el);
 		   }
 		});
 

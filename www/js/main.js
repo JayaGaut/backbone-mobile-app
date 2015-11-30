@@ -13,7 +13,8 @@ require.config({
   paths: {
     jquery: 'libs/jquery/jquery.min',
     underscore: 'libs/underscore',
-    backbone: 'libs/backbone.min'
+    backbone: 'libs/backbone.min',
+    templates: '../tpl'
   }
 
 });
