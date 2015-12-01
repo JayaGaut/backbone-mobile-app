@@ -2,12 +2,16 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/login'
-], function($, _, Backbone, loginView){
+  'views/login',
+  'views/profile'
+], function($, _, Backbone, loginView, profileView){
+	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 	
 			routes: {
-				"": "login" 
+				"": "login",
+				"profile": "profile"
+				
 			},
 		
 		   login: function () {
@@ -16,16 +20,31 @@ define([
 				loginViewInst.render();
 			   
 				$("#content").html(loginViewInst.el);
-		   }
+		   },
+		   profile: function () {
+				profileViewInst = new profileView();
+				profileViewInst.render();
+		
+				
+				$("#content").html(profileViewInst.el);
+        
+           }
 		});
 
       var initialize = function() {
-        new app_router();
+		  
+        routerInst = new app_router();
         Backbone.history.start();
       };
+	  
+      var getInstance = function() {
+      	return routerInst;
+      }
 
       return {
-        initialize: initialize
+        initialize: initialize,
+		 getInstance: getInstance
+		
       }
 });
 

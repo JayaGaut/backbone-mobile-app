@@ -2,8 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/LoginView.html'
-], function($, _, Backbone, loginTemplate){
+  'router',
+  'text!templates/login_tpl.html'
+], function($, _, Backbone, Router, loginTemplate){
+	
       var loginView = Backbone.View.extend({
           router: {},
           events: {
@@ -35,7 +37,7 @@ define([
                           sessionStorage.idUser = data.id;
                           
                           $.ajax({
-                              url: utils.baseUrl + '/api/student/findByUserId/' + utils.idUser,
+                              url: utils.baseUrl + '/api/student/findByUserId/' + utils.idUser, 
                               contentType: 'application/json',
                               dataType: 'json',
                               type: 'GET',
@@ -48,6 +50,8 @@ define([
                                   utils.location = data.location;
                                   closure.render();
                                   window.location= "#profile";
+								  //Router.getInstance().navigate('profile', {trigger: true, replace: true});
+								  //Router.navigate('profile', {trigger: true, replace: true});
                                 
                                 $.ajax({
                                     url: utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent,

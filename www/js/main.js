@@ -6,7 +6,7 @@ var utils = {
     idStudent: '',
     userName: '',
     courses: [],
-	  allCourses: []
+    allCourses: []
 };
 
 require.config({
