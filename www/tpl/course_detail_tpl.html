@@ -1,0 +1,34 @@
+<div style="margin-top:43px;">
+    <div class="detail-info">
+        <span class="course-name">
+            <%= this.course.name%>
+        </span>
+            <br />
+        <span class="prof-name">
+            <!--<%=this.course.professor_id%>-->
+            professor: <%= this.profName %>
+            <br />
+            Section: <%= this.course.section%>
+        </span>
+     
+    </div>
+
+    <div class="message-text">
+        <%= this.course.outline%>
+    </div>
+    <div class="pages-link ">
+         <a href = "#coursenotification">
+        <div class="background-color-0f487f height_50px display_text_center color-white font-size-18px"><i class="fa fa-bell-o font-size-24px"></i> Course Notifications </div>
+        </a>
+        <a href = "#teacherreports">
+            <div class="background-color-2b7dbc height_50px display_text_center color-white font-size-18px"><i class="fa fa-file-text-o font-size-24px"></i> Teacher Reports </div>
+        </a>
+        
+        <a href = "#achievement/<%= this.course.name %>">
+            <div class="background-color-0f487f height_50px display_text_center color-white font-size-18px"><i class="fa fa-trophy font-size-24px">            </i> My Achievements </div>
+        </a>
+        
+    </div>
+
+</div>
+ 

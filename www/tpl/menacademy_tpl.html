@@ -1,0 +1,26 @@
+<div style="margin-top:43px;">
+    <div class= "searchbar">
+        <div class= "boxInput top-7px">
+           <input class="message-small-input" type="text" name="name" value="">
+           <a class="font-size-18px line-height-36px" href="#menacademy"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <ul class="regular-ul">
+        <% _.each(utils.allCourses, function(course,i) { %>
+            <li class="repeated-li">
+                    <div class="circle margin-left-10px margin-top_bottom_20px float-left">
+                       ICON
+                    </div>
+                    <div class="report-info">
+                           <a href="#academydetail"><%= course.name %></a>
+                           <div class="color-525252 font-bold font-size-12px">by Dr. Adrien Pier </div>
+                           
+                           <div class="color-525252 font-size-11px font-italic"> <%= course.endDate %> </div>
+                       </div>
+                       <i class="fa fa-chevron-right fa-2x chevron-right-icon line-height-70px"></i>
+            </li>
+        
+        <!--<li> <%= course.id %> </li>-->
+        <% });%>
+    </ul>
+</div>

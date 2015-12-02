@@ -1,0 +1,20 @@
+<div style="margin-top:43px;">
+    <ul class="regular-ul">
+        <% _.each(utils.allCourses, function(course,i) { %>
+        <li class="repeated-li">
+            <div class="margin-left-10px margin-top-10px float-left">
+                <i class="fa fa-star fa-2x star-blue"></i>
+            </div>
+            <div class="report-info">
+                   <a href=""><%= course.name %></a>
+                   <div class="color-333333 font-size-14px"> File Name.pdf </div>
+                   
+                   <div class="color-2B7DBA font-size-12px"> Adrien Pier </div>
+                   
+                   <div class="color-2B7DBA font-size-11px font-italic"> <%= course.endDate %> </div>
+               </div>
+        </li>
+        <!--<li> <%= course.id %> </li>-->
+        <% });%>
+    </ul>
+</div>

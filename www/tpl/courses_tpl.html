@@ -1,0 +1,26 @@
+<div style="margin-top:43px;">
+   <ul class="tabs-link">
+       <li><a  id="buttonCurrent" class="active-link"> Current <span><i class="fa fa-caret-up"></i></span></a></li>
+       <li><a  id="buttonPast"> Past <span><i class="fa fa-caret-up"></i></span></a></li>
+   </ul>
+    
+<!-- /*<div style="height:40px; background-color:blue;">
+        <button id="buttonCurrent" class="button-past-curr">Current</button>
+        <button id="buttonPast" class="button-past-curr">Past</button>
+    </div> */ --> 
+<ul class="regular-ul">
+    <% _.each( this.courses, function(course,i) { %>
+    <li class="repeated-li">
+        <div class="circle margin-left-10px margin-top-10px float-left">
+            ICON
+        </div>
+        <a class="course-info" href="#coursedetail/<%= course.id %>/<%= i %>"><%= course.name %>
+            <i class="fa fa-chevron-right fa-2x chevron-right-icon"></i>
+        </a>
+        
+    </li>
+    <!--<li> <%= course.id %> </li>-->
+    <% });%>
+</ul>
+    </div>      
+ 
