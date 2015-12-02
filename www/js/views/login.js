@@ -2,12 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'router',
   'text!templates/login_tpl.html'
-], function($, _, Backbone, Router, loginTemplate){
-	
+], function($, _, Backbone, loginTemplate){
+	    
       var loginView = Backbone.View.extend({
-          router: {},
           events: {
               "submit #formLogin": "login"
           },
@@ -21,7 +19,6 @@ define([
             
               var url = utils.baseUrl+'/api/user/auth/'+$('#inputEmail').val()+'/'+$('#inputPassword').val();
               console.log('Loggin in... ');
-              console.log(this.router);
              
               var closure = this;
 
@@ -49,9 +46,9 @@ define([
                                   utils.userName = data.firstName + ' ' + data.lastName; 
                                   utils.location = data.location;
                                   closure.render();
-                                  window.location= "#profile";
-								  //Router.getInstance().navigate('profile', {trigger: true, replace: true});
-								  //Router.navigate('profile', {trigger: true, replace: true});
+                                  window.location.hash = "profile";
+								                  //appRouter.getInstance().navigate('profile', {trigger: true, replace: true});
+								                  //Router.navigate('profile', {trigger: true, replace: true});
                                 
                                 $.ajax({
                                     url: utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent,

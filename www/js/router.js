@@ -5,8 +5,8 @@ define([
   'views/login',
   'views/profile'
 ], function($, _, Backbone, loginView, profileView){
-	  var routerInst;
-	  var app_router = Backbone.Router.extend({
+	  var appRouter;
+	  var router = Backbone.Router.extend({
 	
 			routes: {
 				"": "login",
@@ -32,19 +32,17 @@ define([
 		});
 
       var initialize = function() {
-		  
-        routerInst = new app_router();
+        routerInst = new router();
         Backbone.history.start();
       };
 	  
       var getInstance = function() {
       	return routerInst;
-      }
+      };
 
       return {
         initialize: initialize,
-		 getInstance: getInstance
-		
-      }
+		getInstance: getInstance
+      };
 });
 
