@@ -2,12 +2,13 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'models/message_model',
   'views/header',
   'views/login',
   'views/profile',
   'views/message',
   'views/message_reply'
-], function($, _, Backbone, headerView, loginView, profileView, messageView, messageReplyView){
+], function($, _, Backbone, MessageModel, headerView, loginView, profileView, messageView, messageReplyView){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 	
