@@ -61,7 +61,7 @@ define([
 		
 				} 
 		
-				if (utils.pageTitle == 'MessageFirst') {
+				if (utils.pageTitle == 'Message') {
 					this.$('#trash-icon').addClass('visibility-visible');
 					this.$('#Envelope-plus').addClass('visibility-visible');
 		

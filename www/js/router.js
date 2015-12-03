@@ -5,15 +5,17 @@ define([
   'views/header',
   'views/login',
   'views/profile',
-  'views/message_first'
-], function($, _, Backbone, headerView, loginView, profileView, messageFirstView){
+  'views/message',
+  'views/message_reply'
+], function($, _, Backbone, headerView, loginView, profileView, messageView, messageReplyView){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 	
 			routes: {
 				"": "login",
 				"profile": "profile",
-				"message_first": "message_first"
+				"message": "message",
+				"message_reply": "message_reply"
 			},
 		
 		   login: function () {
@@ -27,7 +29,6 @@ define([
 		   profile: function () {
 				profileViewInst = new profileView();
 				profileViewInst.render();
-				
 				headerViewInst = new headerView();
 		        headerViewInst.render();
 
@@ -36,15 +37,28 @@ define([
         
            },
 		   
-		   message_first: function () {
-				messageFirstViewInst = new messageFirstView();
-				messageFirstViewInst.render();
+		   message: function () {
+				messageViewInst = new messageView({ model: MessageModel });
+				messageViewInst.render();
+				console.log(messageViewInst.el);
 				
 				headerViewInst = new headerView();
 		        headerViewInst.render();
 
                 $('.header').html(headerViewInst.el);
-				$("#content").html(messageFirstViewInst.el);
+				$("#content").html(messageViewInst.el);
+        
+           },
+		   
+		   message_reply: function () {
+				messageReplyViewInst = new messageReplyView();
+				messageReplyViewInst.render();
+				
+				headerViewInst = new headerView();
+		        headerViewInst.render();
+
+                $('.header').html(headerViewInst.el);
+				$("#content").html(messageReplyViewInst.el);
         
            }
 		});
