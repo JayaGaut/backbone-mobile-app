@@ -6,8 +6,9 @@ define([
   'views/login',
   'views/profile',
   'views/message',
-  'views/create_new_msg'
-], function($, _, Backbone, headerView, loginView, profileView, messageView, newMessageView){
+  'views/create_new_msg',
+  'models/message_model'
+], function($, _, Backbone, headerView, loginView, profileView, messageView, newMessageView, MessageModel){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 	
@@ -50,7 +51,8 @@ define([
            },
 		   
 		    new_message: function () {
-				newMessageViewInst = new newMessageView();
+		    	message = new MessageModel();
+				newMessageViewInst = new newMessageView({model: message});
 				newMessageViewInst.render();
 				
 				headerViewInst = new headerView();

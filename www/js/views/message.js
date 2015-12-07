@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'router',
-  'collection/message_collection',
+  'collections/message_collection',
   'text!templates/message_tpl.html'
 ], function($, _, Backbone, Router, MessageCollection, messageTemplate){
 	
