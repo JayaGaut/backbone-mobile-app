@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'router',
+  'collection/message_collection',
   'text!templates/message_tpl.html'
-], function($, _, Backbone, Router, messageTemplate){
+], function($, _, Backbone, Router, MessageCollection, messageTemplate){
 	
 		var messageView = Backbone.View.extend({
 			router: {},
@@ -12,6 +13,10 @@ define([
 			initialize: function () {
 				utils.pageTitle = 'Message';
 				utils.headerTitle = 'MESSAGES';
+				
+				var MessageCollectionInst = new MessageCollection();
+				MessageCollectionInst.fetch();
+				
 			},
 		
 			render: function () {

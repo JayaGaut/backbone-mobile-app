@@ -71,7 +71,7 @@ define([
 		
 				} else if (utils.pageTitle == 'MessageReply') {
 					
-					this.$('#plan').addClass('visibility-visible');
+					this.$('#submitPlane').addClass('visibility-visible');
 		
 				} 
 				else if (utils.pageTitle == 'Profile') {
