@@ -8,7 +8,7 @@ define([
 	var MessageCollection = Backbone.Collection.extend({
 
 		model: MessageModel,
-		url: "/messages"
+		//url: ""
 
 });
 

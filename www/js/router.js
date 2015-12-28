@@ -51,8 +51,7 @@ define([
            },
 		   
 		    new_message: function () {
-		    	message = new MessageModel();
-				newMessageViewInst = new newMessageView({model: message});
+				newMessageViewInst = new newMessageView();
 				newMessageViewInst.render();
 				
 				headerViewInst = new headerView();

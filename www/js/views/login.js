@@ -15,9 +15,14 @@ define([
           },
 
           login:function (event) {
+			  
               event.preventDefault(); // Don't let this button submit the form
-            
-              var url = utils.baseUrl+'/api/user/auth/'+$('#inputEmail').val()+'/'+$('#inputPassword').val();
+			  var loginData = {
+				username : $('#inputEmail').val(),
+				password : $('#inputPassword').val(),
+			  }, url;
+		  	url = utils.baseUrl+'/api/user/auth/'+loginData.username+'/'+loginData.password;
+            /*var url = utils.baseUrl+'/api/user/auth/'+$('#inputEmail').val()+'/'+$('#inputPassword').val();*/
               console.log('Loggin in... ');
              
               var closure = this;
@@ -32,46 +37,22 @@ define([
 
                           utils.idUser = data.id;
                           sessionStorage.idUser = data.id;
-                          
-                          $.ajax({
-                              url: utils.baseUrl + '/api/student/findByUserId/' + utils.idUser, 
-                              contentType: 'application/json',
-                              dataType: 'json',
-                              type: 'GET',
-                              success: function (data) {
-                                  sessionStorage.userName = data.firstName + ' ' + data.lastName;
-                                  sessionStorage.location = data.location;
-                                  sessionStorage.idStudent = data.id;
-                                  utils.idStudent = data.id;
-                                  utils.userName = data.firstName + ' ' + data.lastName; 
-                                  utils.location = data.location;
-                                  closure.render();
-                                  window.location.hash = "profile";
-								                  //appRouter.getInstance().navigate('profile', {trigger: true, replace: true});
-								                  //Router.navigate('profile', {trigger: true, replace: true});
-                                
-                                $.ajax({
-                                    url: utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent,
-                                    contentType: 'application/json',
-                                    dataType: 'json',
-                                    type: 'GET',
-                                    success: function (data) {
-                                        utils.allCourses = data;
-                                        sessionStorage.allCourses = data;
-                                        closure.render();
-                                    },
-                                    error: function (xhr, status, error) {
-                                        alert(status);
-                                    }
-                                });
-                                closure.render();
-                                                
-                              },
-                              error: function (xhr, status, error) {
-                                  alert(status);
-                              }
-                          });
-                          closure.render();
+						  
+						  
+						  
+				    $.ajax({
+                    url : utils.baseUrlApi + '/login',
+                    type : 'POST',
+                    data : loginData,
+                    dataType : 'json',
+                    headers: { 'X-CSRF-TOKEN': sessionStorage._token },
+                    success : function ( dpmData ) {
+
+                    window.location.hash = "profile";
+                    },
+                   
+                  });
+						       
                       }
                       else {
                           $('.alert-error').text("unsucces").show();
@@ -94,4 +75,3 @@ define([
 
     return loginView;
 });
-

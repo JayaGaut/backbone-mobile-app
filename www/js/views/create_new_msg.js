@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'models/message_model',
+  'collections/message_collection',
   'text!templates/create_new_msg_tpl.html'
-], function($, _, Backbone, MessageModel, newMessageTemplate){
+], function($, _, Backbone, MessageModel, MessageCollection, newMessageTemplate){
 	
 		var newMessageView = Backbone.View.extend({
 		
@@ -12,13 +13,6 @@ define([
 				console.log('Initializing newMessageView');
 				utils.pageTitle = 'MessageReply';
 				utils.headerTitle = 'MESSAGES';
-				
-				this.model.on("add", this.onAddNewMsg, this);
-			},
-			
-			onAddNewMsg: function(MessageModelInst){
-				console.log("added");
-				this.model.save();
 			},
 			
 			events: {
@@ -28,8 +22,15 @@ define([
 			onClickSubmit: function(){
 				console.log("clicked submit");
 				var MessageModelInst = new MessageModel({ to: $('#to').val()});
+				
+					if (!MessageModelInst.isValid()) {
+					alert(MessageModelInst.get("to") + " " + MessageModelInst.validationError);
+					return;
+					}
+					
 				MessageModelInst.save();
-				this.model.add(MessageModelInst);
+				MessageCollection.add(MessageModelInst);
+				window.location.hash = "message";
 			},
 		
 			render: function () {

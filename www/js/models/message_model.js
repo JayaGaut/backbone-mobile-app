@@ -9,11 +9,11 @@ define([
 			if(!attrs.to)
 			  return "to is required";
 		},
-		urlRoot:"",
+		//urlRoot:"",
 		defaults: {
 		to: '',
 		subject: '',
-		body: ''
+		content: ''
 		},
 		initialize:function () {
 		}
