@@ -22,15 +22,21 @@ require.config({
 });
 
 require([
+    'jquery', 
+    'app', // Load our app module and pass it to our definition function
+], function($, App){
+    //this ajaxsetup is required only once. 
+    $.ajaxSetup({
+        headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+        }
+    });
 
-  // Load our app module and pass it to our definition function
-  'app',
-], function(App){
-	
-	$.get( utils.baseUrlApi + '/start', function ( data ) { 
+	$.get( utils.baseUrlApi + '/start', function ( data ) {
 	 
-		sessionStorage._token = data._token;
-		alert(sessionStorage._token);
+	sessionStorage._token = data._token;
+	alert(sessionStorage._token);
 			
 	});
   // The "app" dependency is passed in as "App"
