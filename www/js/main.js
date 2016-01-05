@@ -36,7 +36,7 @@ require([
 	$.get( utils.baseUrlApi + '/start', function ( data ) {
 	 
 	sessionStorage._token = data._token;
-	alert(sessionStorage._token);
+	//alert(sessionStorage._token);
 			
 	});
   // The "app" dependency is passed in as "App"

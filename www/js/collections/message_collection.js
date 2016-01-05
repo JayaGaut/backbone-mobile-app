@@ -8,7 +8,8 @@ define([
 	var MessageCollection = Backbone.Collection.extend({
 
 		model: MessageModel,
-		//url: ""
+		url: "http://mentorina.staging.devstdlol.com/dpm/api/messages"
+		//utils.baseUrlApi + '/messages'
 
 });
 

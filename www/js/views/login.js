@@ -39,7 +39,7 @@ define([
                           sessionStorage.idUser = data.id;
 						  
 						  
-						  
+					//alert(sessionStorage._token);	  
 				    $.ajax({
                     url : utils.baseUrlApi + '/login',
                     type : 'POST',

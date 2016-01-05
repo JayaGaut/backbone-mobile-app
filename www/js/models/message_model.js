@@ -9,7 +9,8 @@ define([
 			if(!attrs.to)
 			  return "to is required";
 		},
-		//urlRoot:"",
+		urlRoot: "http://mentorina.staging.devstdlol.com/dpm/api/messages",
+		//utils.baseUrlApi + '/messages',
 		defaults: {
 		to: '',
 		subject: '',
