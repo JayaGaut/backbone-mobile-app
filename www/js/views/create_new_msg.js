@@ -10,6 +10,7 @@ define([
 		var newMessageView = Backbone.View.extend({
 		
 			initialize: function () {
+				alert("33");
 				console.log('Initializing newMessageView');
 				utils.pageTitle = 'MessageReply';
 				utils.headerTitle = 'MESSAGES';

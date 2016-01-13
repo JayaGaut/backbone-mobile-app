@@ -20,6 +20,7 @@ define([
 			  var loginData = {
 				username : $('#inputEmail').val(),
 				password : $('#inputPassword').val(),
+				_token: sessionStorage._token
 			  }, url;
 		  	url = utils.baseUrl+'/api/user/auth/'+loginData.username+'/'+loginData.password;
             /*var url = utils.baseUrl+'/api/user/auth/'+$('#inputEmail').val()+'/'+$('#inputPassword').val();*/
@@ -41,12 +42,18 @@ define([
 						  
 					//alert(sessionStorage._token);	  
 				    $.ajax({
+					xhrFields: {
+                      withCredentials: true
+                    },
                     url : utils.baseUrlApi + '/login',
                     type : 'POST',
                     data : loginData,
                     dataType : 'json',
                     headers: { 'X-CSRF-TOKEN': sessionStorage._token },
                     success : function ( dpmData ) {
+						
+                    sessionStorage._token = dpmData._token;
+					console.log( dpmData, sessionStorage._token );
 
                     window.location.hash = "profile";
                     },
