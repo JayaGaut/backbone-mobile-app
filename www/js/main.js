@@ -25,22 +25,19 @@ require([
     'jquery', 
     'app', // Load our app module and pass it to our definition function
 ], function($, App){
-    //this ajaxsetup is required only once. 
-    $.ajaxSetup({
+    //this ajaxsetup is required only once.
+    /*$.ajaxSetup({
         headers: {
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
         }
-    });
+    });*/
 
 	$.get( utils.baseUrlApi + '/start', function ( data ) {
-	 
-	sessionStorage._token = data._token;
-	//alert(sessionStorage._token);
-			
+	   sessionStorage._token = data._token;
 	});
-  // The "app" dependency is passed in as "App"
-  App.initialize();
+    // The "app" dependency is passed in as "App"
+    App.initialize();
 });
 
 
