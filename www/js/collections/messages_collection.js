@@ -5,7 +5,7 @@ define([
   'models/message_model'
 ], function($, _, Backbone, MessageModel){
 	
-	var MessageCollection = Backbone.Collection.extend({
+	var MessagesCollection = Backbone.Collection.extend({
 
 		model: MessageModel,
 		url: "http://mentorina.staging.devstdlol.com/dpm/api/messages",
@@ -23,5 +23,5 @@ define([
 
 });
 
- 	return MessageCollection;
+ 	return MessagesCollection;
 });

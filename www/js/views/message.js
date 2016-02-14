@@ -8,7 +8,7 @@ define([
 ], function($, _, Backbone, Router, MessageCollection, messageTemplate){
 	
 	var messageView = Backbone.View.extend({
-		el: '#message_list',
+		//el: '#message_list',
 		router: {},
 		events: {},
 		initialize: function () {
@@ -18,32 +18,17 @@ define([
 				},
 			});
 
-			utils.pageTitle = 'Message';
+			/*utils.pageTitle = 'Message';
 			utils.headerTitle = 'MESSAGES';
 			this.collection = new MessageCollection();
 			this.listenTo(this.collection, 'add', this.addOne);
 			this.listenTo(this.collection, 'reset', this.addAll);
-			this.collection.fetch();
-			/*
-			this.collection.fetch().done(function(){
-			  self.render();
-			});
-			*/
-		},
-		
-		addOne: function (messageModel) {
-			console.log('adding one');
+			this.collection.fetch();*/
 			
-			//var view = new messageView({ model: messageModel });
-			//$el.append(view.render().el);
-		},
-
-		addAll: function () {
-			console.log('adding all..');
-			/*this.collection.each(function(messageModel) {
-			var messageViewInst = new messageView({ model: messageModel });
-			$el.append(view.render().el);
+			/*this.collection.fetch().done(function(){
+			  this.render();
 			});*/
+			
 		},
 	
 		render: function () {
