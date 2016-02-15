@@ -3,9 +3,9 @@ define([
   'underscore',
   'backbone',
   'models/message_model',
-  'collections/message_collection',
+  'collections/messages_collection',
   'text!templates/create_new_msg_tpl.html'
-], function($, _, Backbone, MessageModel, MessageCollection, newMessageTemplate){
+], function($, _, Backbone, MessageModel, MessagesCollection, newMessageTemplate){
 	
 		var newMessageView = Backbone.View.extend({
 		
