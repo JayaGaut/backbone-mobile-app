@@ -11,60 +11,37 @@ define([
           },
 
           initialize: function () {
-              
+			  console.log(sessionStorage._token);
           },
 
           login:function (event) {
             event.preventDefault(); // Don't let this button submit the form
-			var loginData, url
-              
-            loginData = {
-                username : $('#inputEmail').val(),
-                password : $('#inputPassword').val(),
-				//_token   : sessionStorage._token
-            };
-
-		  	url = utils.baseUrl + '/api/user/auth/' + loginData.username + '/' + loginData.password;
-            
-            /*var url = utils.baseUrl+'/api/user/auth/'+$('#inputEmail').val()+'/'+$('#inputPassword').val();*/
-            console.log('Loggin in... ');
+            console.log('Loggin in...');
             var closure = this;
 
-            $.ajax({
-                url: url,
-                contentType: 'application/json',
-                dataType: 'json',
-                type: 'POST',
-                success: function (data) {
-                    if ((data.name == $('#inputEmail').val()) && (data.password == $('#inputPassword').val())) {
-                        utils.idUser = data.id;
-                        sessionStorage.idUser = data.id;
-				       //alert(sessionStorage._token);	  
-			            $.ajax({
-                            xhrFields: {
-                                //withCredentials: true
-                            },
-                            url : utils.baseUrlApi + '/login',
-                            type : 'POST',
-                            data : loginData,
+				        $.ajax({
+                            url : "http://mentorinav2.staging.devstdlol.com/login",
+                            type : "POST",
+                            data : {
+							_token : "c6Vowmo5hA6peFT9mCyEAUWhHYih3AvYi0GxOYQS",
+							username : "George",
+							password : "abcd1234"},
                             dataType : 'json',
-                            headers: { 'X-CSRF-TOKEN': sessionStorage._token },
-                            success : function ( dpmData ) {
-                                sessionStorage._token = dpmData._token;
-                                console.log( dpmData, sessionStorage._token );
+                            /*headers: { 'Accept': 'application/json',
+                                       'X-Requested-With': 'XMLHttpRequest'
+									 },*/
+                            success : function ( r ) {
+                                //sessionStorage._token = r._token;
+                                //console.log( r, sessionStorage._token );
+								alert(sessionStorage._token);
                                 window.location.hash = "profile";
-                            }
-                        });
-                    }
-                    else {
-                        $('.alert-error').text("unsucces").show();
-                        alert('Your username or password is invalid.');
-                    }  
-                },
+                            },
+   
                 error: function (xhr, status, error) {
                     alert(status);
                 }
             });
+	   
         },
 
         render:function () {

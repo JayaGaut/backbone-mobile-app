@@ -1,6 +1,6 @@
 var utils = {
-    baseUrl: 'http://54.200.51.244:8080',
-	baseUrlApi: 'http://mentorina.staging.devstdlol.com/dpm/api',
+    //baseUrl: 'http://54.200.51.244:8080',
+	baseUrlApi: 'http://mentorinav2.staging.devstdlol.com',
     headerTitle: '',
     pageTitle: '',
     idUser: '',
@@ -26,14 +26,14 @@ require([
     'app', // Load our app module and pass it to our definition function
 ], function($, App){
     //this ajaxsetup is required only once.
-    /*$.ajaxSetup({
+    $.ajaxSetup({
         headers: {
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
         }
-    });*/
+    });
 
-	$.get( utils.baseUrlApi + '/start', function ( data ) {
+	$.get('http://mentorinav2.staging.devstdlol.com/', function ( data ) {
 	   sessionStorage._token = data._token;
 	});
     // The "app" dependency is passed in as "App"
