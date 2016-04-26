@@ -33,7 +33,7 @@ require([
         }
     });
 
-	$.get('http://mentorinav2.staging.devstdlol.com/', function ( data ) {
+	$.get('http://mentorina.staging.dpm.co.com/', function ( data ) {
 	   sessionStorage._token = data._token;
 	});
     // The "app" dependency is passed in as "App"
