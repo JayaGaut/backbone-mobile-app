@@ -18,6 +18,7 @@
     
     <!-- Load the script "js/main.js" as our entry point -->
     <script data-main="js/main" src="js/libs/require/require.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
  
 </head>
 
@@ -63,7 +64,7 @@
         </li>
         
         <li>
-        <a title="Logout" href="" id="logout"><i class="fa fa-sign-out"></i> Logout</a>
+        <a title="Logout" id="logout"><i class="fa fa-sign-out"></i> Logout</a>
         </li>
         
      </ul>
@@ -71,6 +72,28 @@
         <div class="header"></div>
         <div class="container" id="content"></div>
     </div>
+    
+    <script>
+	   $( "#logout" ).click(function() {
+  			   alert( "Handler for .click() called." );	
+			   sessionStorage.clear();
+			   
+			   $.ajax({
+				url : "http://mentorina.staging.dpm.co.com/logout",
+				dataType : "json",
+				type : "GET",
+				success : function ( data ) {
+					console.log(data);
+					window.location.hash = "";
+				},
+   
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+			   
+	   });
+    </script>
 
 
 <!--<div class="container">

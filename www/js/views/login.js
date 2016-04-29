@@ -41,7 +41,7 @@ define([
 				},
 				success : function ( data ) {
 					//console.log( r, sessionStorage._token );
-					console.log( data );
+					//console.log( data );
 					window.location.hash = "profile";
 					/*if ((data.name == $('#inputEmail').val()) && (data.password == $('#inputPassword').val())) {
 						console.log('success', data);

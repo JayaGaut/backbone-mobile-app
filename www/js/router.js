@@ -4,20 +4,19 @@ define([
   'backbone',
   'views/header',
   'views/login',
-  'views/logout',
   'views/profile',
   'views/messages',
   'views/message',
   'views/create_new_msg',
   'models/message_model'
-], function($, _, Backbone, headerView, loginView, logoutView, profileView, messagesView,
+], function($, _, Backbone, headerView, loginView, profileView, messagesView,
 	messageView, newMessageView, MessageModel){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 	
 			routes: {
 				"": "login",
-				"logout": "logout",
+				//"logout": "logout",
 				"profile": "profile",
 				"message": "message",
 				"new_message": "new_message"
@@ -31,13 +30,12 @@ define([
 				$("#content").html(loginViewInst.el);
 		   },
 		   
-		   logout: function () {
-			   alert("200");
-				logoutViewInst = new logoutView();
-				logoutViewInst.render();
-			   
-				$("#content").html(logoutViewInst.el);
-		   },
+		   /*logout: function () {
+			   $( "#logout" ).click(function() {
+  			   		alert( "Handler for .click() called." );
+					
+			   });
+		   },*/
 		   
 		   profile: function () {
 				profileViewInst = new profileView();

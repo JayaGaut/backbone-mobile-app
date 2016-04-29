@@ -12,7 +12,7 @@ define([
 				utils.pageTitle = 'Profile';
 				utils.headerTitle = 'PROFILE';
 				
-			alert("10");
+			//alert("10");
             event.preventDefault(); // Don't let this button submit the form
             console.log('profile..');
 			
@@ -26,7 +26,8 @@ define([
 				type : "GET",
 				success : function ( data ) {
 					console.log( data );
-                    //sessionStorage.idUser = data.id;
+                    sessionStorage.idUser = data.id;
+					console.log( sessionStorage.idUser );
 					
 				},
    
@@ -44,7 +45,7 @@ define([
 		
 			render: function () {
 				var compiledTemplate = _.template( profileTemplate);
-                $(this.el).html(compiledTemplate({userID: 20}));
+                $(this.el).html(compiledTemplate({userID: sessionStorage.idUser}));
 				return this;
 			}
 		});
