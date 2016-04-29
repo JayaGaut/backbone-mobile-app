@@ -43,9 +43,8 @@ define([
         },*/
 		
 			render: function () {
-				var compiledTemplate = _.template( profileTemplate,{idUser:"20"} );
-				
-                $(this.el).html(compiledTemplate);
+				var compiledTemplate = _.template( profileTemplate);
+                $(this.el).html(compiledTemplate({userID: 20}));
 				return this;
 			}
 		});
