@@ -10,32 +10,44 @@ define([
               "submit #formLogin": "login"
           },
 
-          initialize: function () {
-			  console.log(sessionStorage._token);
+
+          initialize: function () {  
           },
 
           login:function (event) {
-            event.preventDefault(); // Don't let this button submit the form
-            console.log('Loggin in...');
-            var closure = this;
+			  
+		 event.preventDefault(); // Don't let this button submit the form
+		 console.log('Loggin in...');
+		 var closure = this;
 
+		/*loginData = {
+			identifier : $('#inputEmail').val(),
+			password : $('#inputPassword').val(),
+			_token   : sessionStorage._token
+		};*/
+          
 			$.ajax({
-				xhrFields: {
-        			withCredentials: true
-    			},
+				
 				url : "http://mentorina.staging.dpm.co.com/login",
 				dataType : "json",
 				type : "POST",
+				xhrFields: {
+					withCredentials: true
+				},
 				data : {
-				_token : sessionStorage._token,
-				identifier : "GeorgeS",
-				password : "abcd1234"
+					_token: sessionStorage._token,
+					identifier: "GeorgeS",
+					password: "abcd1234"
 				},
 				success : function ( data ) {
-					//sessionStorage._token = r._token;
 					//console.log( r, sessionStorage._token );
-					console.log('success', data);
+					console.log( data );
 					window.location.hash = "profile";
+					/*if ((data.name == $('#inputEmail').val()) && (data.password == $('#inputPassword').val())) {
+						console.log('success', data);
+					    window.location.hash = "profile";
+					}*/
+					
 				},
    
                 error: function (xhr, status, error) {
