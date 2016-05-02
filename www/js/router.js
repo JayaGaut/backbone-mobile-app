@@ -45,7 +45,6 @@ define([
 
                 $('.header').html(headerViewInst.el);
 				$("#content").html(profileViewInst.el);
-        
            },
 		   
 		   message: function () {
