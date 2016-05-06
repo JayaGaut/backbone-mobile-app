@@ -13,29 +13,44 @@ define([
 	messageView, newMessageView, MessageModel){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
-	
+		   
 			routes: {
 				"": "login",
-				//"logout": "logout",
+				"logout": "logout",
 				"profile": "profile",
 				"message": "message",
 				"new_message": "new_message"
 			},
 		
 		   login: function () {
-			   
+			    
 				loginViewInst = new loginView();
 				loginViewInst.render();
 			   
+			    $('.header').hide();
 				$("#content").html(loginViewInst.el);
+				
 		   },
 		   
-		   /*logout: function () {
-			   $( "#logout" ).click(function() {
-  			   		alert( "Handler for .click() called." );
+		   logout: function () {
+			   //alert( "Handler for .click() called." );
+			   $("#body").removeClass('menu-visible');	
+			   sessionStorage.clear();
+			   $.ajax({
+				url : utils.baseUrlApi + "/logout",
+				dataType : "json",
+				type : "GET",
+				success : function ( data ) {
+					console.log(data);
+					window.location.hash = "";
 					
-			   });
-		   },*/
+				},
+   
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+			});
+		   },
 		   
 		   profile: function () {
 				profileViewInst = new profileView();
@@ -44,6 +59,7 @@ define([
 		        headerViewInst.render();
 
                 $('.header').html(headerViewInst.el);
+				$('.header').show();
 				$("#content").html(profileViewInst.el);
            },
 		   

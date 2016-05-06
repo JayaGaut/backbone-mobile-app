@@ -10,50 +10,61 @@ define([
               "submit #formLogin": "login"
           },
 
-
           initialize: function () {  
+			  $.get(utils.baseUrlApi + '/', function ( data ) {
+				sessionStorage._token = data._token;
+				console.log(data);
+				});
           },
 
           login:function (event) {
+			 event.preventDefault(); // Don't let this button submit the form
+			 console.log('Loggin in...');
+			 var closure = this;
+			 
+			
+	
+			loginData = {
+				identifier : $('#inputEmail').val(),
+				password : $('#inputPassword').val(),
+				_token   : sessionStorage._token
+			};
 			  
-		 event.preventDefault(); // Don't let this button submit the form
-		 console.log('Loggin in...');
-		 var closure = this;
-
-		/*loginData = {
-			identifier : $('#inputEmail').val(),
-			password : $('#inputPassword').val(),
-			_token   : sessionStorage._token
-		};*/
-          
-			$.ajax({
-				
-				url : "http://mentorina.staging.dpm.co.com/login",
-				dataType : "json",
-				type : "POST",
-				xhrFields: {
-					withCredentials: true
-				},
-				data : {
-					_token: sessionStorage._token,
-					identifier: "GeorgeS",
-					password: "abcd1234"
-				},
-				success : function ( data ) {
-					//console.log( r, sessionStorage._token );
-					//console.log( data );
-					window.location.hash = "profile";
-					/*if ((data.name == $('#inputEmail').val()) && (data.password == $('#inputPassword').val())) {
-						console.log('success', data);
-					    window.location.hash = "profile";
-					}*/
-					
-				},
-   
-                error: function (xhr, status, error) {
-                    alert(status);
-                }
-            });
+				$.ajax({
+					url : utils.baseUrlApi + "/login",
+					dataType : "json",
+					type : "POST",
+					data : loginData,
+					success : function ( data ) {
+						var error ='';
+						if( !data.success ){
+							error = data.errors;
+							if( error == "These credentials do not match our records." ){
+								alert( "Wrong Username or Password");
+							}
+						}	
+							else{
+							console.log( data );
+							console.log( data.object.username );
+							window.location.hash = "profile";
+						    }	
+						
+					},
+	   
+					error: function (jqXHR, exception) {
+						//alert(jqXHR.status);
+						if( jqXHR.status == "422" ){
+								alert( "Please Enter Username and password");
+							}
+							/*else if( jqXHR.status == "422"){
+								alert( " Wrong Username or Password");
+							}
+							else if( error == "The password field is required."){
+								alert( "Please Enter password");
+							}*/
+						
+					}
+				});
 	   
         },
 

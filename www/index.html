@@ -26,10 +26,10 @@
     <ul id="menu">
         <div class="header-menu">
 
-           	   <img class="img-circle thumbnail" src="pics/DianaSiegler.jpg" height ="80px" width="80px" />
+           	   <img id="avatar" class="img-circle thumbnail" src="" height ="80px" width="80px" />
            
                <div class="font-size-11px font-bold color-#0E477F">
-                    <span class="font-size-15px color-white font-bold">Diana Dianasiegler</span>
+                    <span id= "UserName" class="font-size-15px color-white font-bold"> </span>
                     <br />
                     <span class="color-white">100252463 </span>
                     <br />
@@ -63,8 +63,9 @@
         <a title="Settings" href="#profile"><i class="fa fa-cog"></i> Settings</a>
         </li>
         
+
         <li>
-        <a title="Logout" id="logout"><i class="fa fa-sign-out"></i> Logout</a>
+        <a title="Logout"  href="#logout" id="logout"><i class="fa fa-sign-out"></i> Logout</a>
         </li>
         
      </ul>
@@ -73,28 +74,7 @@
         <div class="container" id="content"></div>
     </div>
     
-    <script>
-	   $( "#logout" ).click(function() {
-  			   alert( "Handler for .click() called." );	
-			   sessionStorage.clear();
-			   
-			   $.ajax({
-				url : "http://mentorina.staging.dpm.co.com/logout",
-				dataType : "json",
-				type : "GET",
-				success : function ( data ) {
-					console.log(data);
-					window.location.hash = "";
-				},
    
-                error: function (xhr, status, error) {
-                    alert(status);
-                }
-            });
-			   
-	   });
-    </script>
-
 
 <!--<div class="container">
     <div class="row">

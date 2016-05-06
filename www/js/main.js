@@ -1,6 +1,5 @@
 var utils = {
-    //baseUrl: 'http://54.200.51.244:8080',
-	baseUrlApi: 'http://mentorinav2.staging.devstdlol.com',
+	baseUrlApi: 'http://mentorina.staging.dpm.co.com',
     headerTitle: '',
     pageTitle: '',
     idUser: '',
@@ -25,7 +24,6 @@ require([
     'jquery', 
     'app', // Load our app module and pass it to our definition function
 ], function($, App){
-	
     //this ajaxsetup is required only once.
     $.ajaxSetup({
         headers: {
@@ -38,11 +36,11 @@ require([
 		
     });
 
-$.get('http://mentorina.staging.dpm.co.com/', function ( data ) {
+/*$.get(utils.baseUrlApi + '/', function ( data ) {
 		    sessionStorage._token = data._token;
 			console.log(data);
 		
-	});
+	});*/
     // The "app" dependency is passed in as "App"
     App.initialize();
 });
