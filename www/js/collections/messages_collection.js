@@ -8,8 +8,7 @@ define([
 	var MessagesCollection = Backbone.Collection.extend({
 
 		model: MessageModel,
-		url: "http://mentorina.staging.devstdlol.com/dpm/api/messages",
-		//utils.baseUrlApi + '/messages'
+		url: "http://mentorina.staging.dpm.co.com/student/messages",
 		
 		sync : function ( method, model, options ) {
 	    

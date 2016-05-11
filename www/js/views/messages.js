@@ -5,9 +5,10 @@ define([
   'router',
   'collections/messages_collection',
   'models/message_model',
-  'views/message'
+  'views/messages',
+  'text!templates/messages_tpl.html'
 ], function($, _, Backbone, Router, MessagesCollection, 
-	MessageModel, MessageView){
+	MessageModel, MessageView, messagesTemplate){
 	
 		var messagesView = Backbone.View.extend({
 			tagName: 'ul',
@@ -24,24 +25,24 @@ define([
 				utils.headerTitle = 'MESSAGES';
 				this.collection = new MessagesCollection();
 				
-				this.listenTo(this.collection, 'add', this.addOne);
+				//this.listenTo(this.collection, 'add', this.addOne);
 				this.listenTo(this.collection, 'reset', this.addAll);
 				this.collection.fetch();
 			},
 
-			addOne: function (messageModel) {
+			/*addOne: function (messageModel) {
 				console.log('adding one');
 				
-				var view = new MessageView({ model: messageModel });
+				var view = new MessageView({ model: MessageModel });
 				this.$el.append(view.render().el);
-			},
+			},*/
 
 			addAll: function () {
 				console.log('adding all..');
-				/*this.collection.each(function(messageModel) {
+				this.collection.each(function(messageModel) {
 				var messageViewInst = new messageView({ model: messageModel });
 				$el.append(view.render().el);
-				});*/
+				});
 			},
 		
 			render: function () {

@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'router',
+  'models/message_model',
   'text!templates/message_tpl.html'
-], function($, _, Backbone, Router, messageTemplate){
+], function($, _, Backbone, Router, MessageModel,messageTemplate){
 	
 	var messageView = Backbone.View.extend({
 		//el: '#message_list',
