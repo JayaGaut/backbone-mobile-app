@@ -5,7 +5,7 @@ define([
   'router',
   'models/message_model',
   'text!templates/message_tpl.html'
-], function($, _, Backbone, Router, MessageModel,messageTemplate){
+], function($, _, Backbone, Router, MessageModel, messageTemplate){
 	
 	var messageView = Backbone.View.extend({
 		//el: '#message_list',
@@ -33,7 +33,7 @@ define([
 	
 		render: function () {
 			var compiledTemplate = _.template( messageTemplate );
-			$(this.el).html(compiledTemplate);
+			this.$el.html(compiledTemplate({}));
 			//$el.html(compiledTemplate);
 			return this;
 		},

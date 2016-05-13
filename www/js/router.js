@@ -18,7 +18,7 @@ define([
 				"": "login",
 				"logout": "logout",
 				"profile": "profile",
-				"message": "message",
+				"messages": "messages",
 				"new_message": "new_message"
 			},
 		
@@ -63,7 +63,7 @@ define([
 				$("#content").html(profileViewInst.el);
            },
 		   
-		   message: function () {
+		   messages: function () {
 				messagesViewInst = new messagesView();
 				messagesViewInst.render();
 				
