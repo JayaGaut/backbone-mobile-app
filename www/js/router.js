@@ -64,8 +64,12 @@ define([
            },
 		   
 		   messages: function () {
+			    console.log("1");
 				messagesViewInst = new messagesView();
+				console.log("2");
 				messagesViewInst.render();
+				console.log("3");
+				
 				
 				headerViewInst = new headerView();
 		        headerViewInst.render();

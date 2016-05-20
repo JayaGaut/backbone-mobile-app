@@ -33,7 +33,19 @@ define([
 	
 		render: function () {
 			var compiledTemplate = _.template( messageTemplate );
-			this.$el.html(compiledTemplate({}));
+			/*sessionStorage.Msgattr = this.model.attributes;
+			sessionStorage.Msgdata = this.model.toJSON();
+			console.log(sessionStorage.Msgattr);
+			var y = this.model.toJSON();
+			var x = y.get("inbox");
+			console.log(x);*/
+			console.log(this.model.get("inbox"));
+			console.log(this.model.get("attributes"));
+			
+			this.$el.html(compiledTemplate(this.model.toJSON()));
+			
+
+			//return $(this.el).append(this.template(this.model.toJSON()));
 			//$el.html(compiledTemplate);
 			return this;
 		},

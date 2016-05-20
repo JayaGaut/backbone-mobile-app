@@ -23,14 +23,18 @@ define([
 			initialize: function () {
 				utils.pageTitle = 'Message';
 				utils.headerTitle = 'MESSAGES';
+				console.log("4");
 				this.collection = new MessagesCollection();
 				
 				//this.listenTo(this.collection, 'add', this.addOne);
 				this.listenTo(this.collection, 'reset', this.render);
+				//this.collection.bind("reset", this.render);
 
 				this.collection.fetch({
 					reset: true
 				});
+				
+				 console.log(this.collection);
 			},
 
 			/*addOne: function (messageModel) {
@@ -41,6 +45,17 @@ define([
 			},*/
 
 			render: function () {
+				console.log(this.collection.length);
+				alert(JSON.stringify(this.collection));
+				/*var x = JSON.stringify(this.collection);
+				var y = x.get("inbox");
+				console.log(y);*/
+				/*sessionStorage.Msg = JSON.stringify(this.collection);
+				console.log(sessionStorage.Msg);
+				sessionStorage.id = sessionStorage.Msg.inboxCount;
+				console.log(sessionStorage.id);*/
+				//data.items[1].name
+				
 				this.collection.each(function(messageModel) {
 					var messageViewInst = new MessageView({ model: messageModel });
 					this.$el.append(messageViewInst.render().el);
