@@ -1,6 +1,9 @@
+
+<% _.each(posts,function(obj) { %>
+
 <li class="border-bottom-dotted-gray padding-bottom-10px">
     <a href="#messagesecond">
-        <div class="message-time color-7D7D7D font-size-11px">  <%= inbox.id %> </div>
+        <div class="message-time color-7D7D7D font-size-11px">  <%= obj.content %> </div>
         <div class="img-message">
             <img class="img-circle thumbnail" src="pics/student.jpg" height="47px" width="47px" />
         </div>
@@ -16,3 +19,5 @@
         </div>
     </a>
 </li> 
+
+<% }); %>
