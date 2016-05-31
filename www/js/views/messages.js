@@ -50,7 +50,6 @@ define([
 				this.collection.each(function(messageModel) {
 					//console.log(messageModel.attributes.inbox);
 					var posts = {"posts": messageModel.attributes.inbox};
-					console.log(posts);
 					var messageViewInst = new MessageView({ model: messageModel });
 					//this.$el.append(messageViewInst.render().el);
 					this.$el.append(messageViewInst.render(posts).el);

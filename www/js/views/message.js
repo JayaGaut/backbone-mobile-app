@@ -31,13 +31,11 @@ define([
 			
 		},
 	
-	 render : function (posts) {
-			console.log(posts);
+	 render: function(posts) {
 			var compiledTemplate = _.template( messageTemplate );
 			
-			this.$el.html(compiledTemplate(this.model.toJSON()));
-			_.compile(compiledTemplate,posts);
-			
+			//this.$el.html(compiledTemplate(this.model.toJSON()));
+			this.$el.html(compiledTemplate(posts));
 			//return $(this.el).append(this.template(this.model.toJSON()));
 			//$el.html(compiledTemplate);
 			return this;
