@@ -18,13 +18,19 @@ define([
 				xhr.setRequestHeader('X-CSRF-TOKEN', sessionStorage._token);
 			};
 	       
-    		return Backbone.Model.prototype.sync.call(this, method, _model, options);
+    		return Backbone.Model.prototype.sync.call(this, method, model, options);
 			
 	    },
 		urlRoot: "http://mentorina.staging.dpm.co.com/student/messages",
 		defaults: {
-		id: '',
-		_id: ''
+		_token: '',
+		to: '',
+		cc: '',
+		bcc: '',
+		subject: '',
+		content: '',
+		situation:'',
+		status: ''
 		},
 	
 		/*initialize:function () {

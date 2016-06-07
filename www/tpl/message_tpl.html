@@ -1,19 +1,19 @@
 <% _.each(posts, function(obj) { %>
 
 <li class="border-bottom-dotted-gray padding-bottom-10px">
-    <a href="#messagesecond">
-        <div class="message-time color-7D7D7D font-size-11px">  <%= obj.content %> </div>
+    <a href="#messageSecond/<%= obj._init.sender_name %>/<%= obj.subject %>/<%= (obj._init.sentDate).substr(11, 8) %>/<%=        (obj.content).substring(3, obj.content.length - 4) %>">
+        <div class="message-time color-7D7D7D font-size-11px">  <%= (obj._init.sentDate).substr(11, 8) %> </div>
         <div class="img-message">
             <img class="img-circle thumbnail" src="pics/student.jpg" height="47px" width="47px" />
         </div>
 
         <div class="message-info">
-            <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> Amy Muller </span>
+            <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= obj._init.sender_name%> </span>
             <br />
-            <span class="color-525252 font-size-12px font-bold"> Subject </span>
+            <span class="color-525252 font-size-12px font-bold"> <%= obj.subject %> </span>
             <br />
             <div class="color-525252 font-size-11px font-italic">
-                <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula posuere nisi. </span>
+                <span> <%= obj.content %> </span>
             </div>
         </div>
     </a>

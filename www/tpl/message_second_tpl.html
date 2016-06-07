@@ -4,32 +4,19 @@
             </div>
 
     <div class="message-info">
-                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> Amy Muller </span>
+                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= sender_name %> </span>
                 <br />
-                <span class="color-525252 font-size-12px font-bold"> Subject </span>
+                <span class="color-525252 font-size-12px font-bold"> <%= subject %> </span>
                 <br />
                 <div class="color-525252 font-size-11px font-italic">
-                    <span> Jully 22, 2015 - 11:35 AM </span>
+                    <span> <%= sentDate %> </span>
                 </div>
             </div>       
 </div>
 
 <div class="message-text">
     <span>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Morbi auctor vehicula urna quis ornare.
-        Suspendisse ornare laoreet congue.
-        Vestibulum vel dolor dapibus, vulputate orci sit amet, semper enim.
-        Vivamus auctor, ex id elementum rhoncus, nisl nisl rutrum enim, eget maximus turpis felis in leo.
-
-        Proin elementum dui at sem pellentesque bibendum.
-        Integer in leo id risus tempus euismod sit amet ut sapien.
-        Aenean consectetur sit amet metus facilisis finibus.
-        Vivamus tincidunt viverra orci, at rhoncus ipsum. Aliquam rhoncus vel felis a mattis.
-        Mauris scelerisque eget tortor vitae dictum. Etiam at neque metus.
-
-        Cheers,
-        Amy
+       <%= content %>
     </span>
 </div>
 <a href="#messagereply">

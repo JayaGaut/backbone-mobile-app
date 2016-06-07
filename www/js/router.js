@@ -7,10 +7,12 @@ define([
   'views/profile',
   'views/messages',
   'views/message',
+  'views/message_second',
   'views/create_new_msg',
+  'views/message_delete',
   'models/message_model'
 ], function($, _, Backbone, headerView, loginView, profileView, messagesView,
-	messageView, newMessageView, MessageModel){
+	messageView, messageSecondView, newMessageView, messageDeleteView, MessageModel){
 	  var routerInst;
 	  var app_router = Backbone.Router.extend({
 		   
@@ -19,7 +21,9 @@ define([
 				"logout": "logout",
 				"profile": "profile",
 				"messages": "messages",
-				"new_message": "new_message"
+				"messageSecond/:sender_name/:subject/:sentDate/:content": "messageSecond",
+				"new_message": "new_message",
+				"messageDelete/:posts": "messageDelete"
 			},
 		
 		   login: function () {
@@ -64,18 +68,30 @@ define([
            },
 		   
 		   messages: function () {
-			    console.log("1");
 				messagesViewInst = new messagesView();
-				console.log("2");
 				messagesViewInst.render();
-				console.log("3");
-				
 				
 				headerViewInst = new headerView();
 		        headerViewInst.render();
 
                 $('.header').html(headerViewInst.el);
 				$("#content").html(messagesViewInst.el);
+        
+           },
+		   
+		   messageSecond: function (sender_name, subject, sentDate, content ) {
+				messageSecondViewInst = new messageSecondView();
+				messageSecondViewInst.sender_name = sender_name;
+				messageSecondViewInst.subject = subject;
+				messageSecondViewInst.sentDate = sentDate;
+				messageSecondViewInst.content = content;
+				messageSecondViewInst.render();
+				
+				headerViewInst = new headerView();
+		        headerViewInst.render();
+
+                $('.header').html(headerViewInst.el);
+				$("#content").html(messageSecondViewInst.el);
         
            },
 		   
@@ -88,6 +104,19 @@ define([
 
                 $('.header').html(headerViewInst.el);
 				$("#content").html(newMessageViewInst.el);
+        
+           },
+		   
+		   messageDelete: function (posts) {
+				messageDeleteViewInst = new messageDeleteView();
+				messageDeleteViewInst.posts = posts;
+				messageDeleteViewInst.render();
+				
+				headerViewInst = new headerView();
+		        headerViewInst.render();
+
+                $('.header').html(headerViewInst.el);
+				$("#content").html(messageDeleteViewInst.el);
         
            }
 		});

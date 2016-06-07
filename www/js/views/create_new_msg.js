@@ -10,29 +10,34 @@ define([
 		var newMessageView = Backbone.View.extend({
 		
 			initialize: function () {
-				alert("33");
 				console.log('Initializing newMessageView');
 				utils.pageTitle = 'MessageReply';
 				utils.headerTitle = 'MESSAGES';
 			},
 			
 			events: {
-				"click #SubmitPlane": "onClickSubmit"
+				"click #submitPlane": "onClickSubmit"
 			},
 			
-			onClickSubmit: function(){
+/*			onClickSubmit: function(){
 				console.log("clicked submit");
-				var MessageModelInst = new MessageModel({ to: $('#to').val()});
+				MessageModelInst = new MessageModel();
+                MessageModelInst.set({'_token':sessionStorage._token,
+				                      'to': $('#to').val(),
+									  'cc':'', 'bcc':'',
+									  'subject': $('#subject').val(),
+									  'content':$('#body').val()});
+                console.log(MessageModelInst.toJSON());
 				
-					if (!MessageModelInst.isValid()) {
+					/*if (!MessageModelInst.isValid()) {
 					alert(MessageModelInst.get("to") + " " + MessageModelInst.validationError);
 					return;
-					}
+					}*/
 					
-				MessageModelInst.save();
+				/*MessageModelInst.save();
 				MessageCollection.add(MessageModelInst);
-				window.location.hash = "message";
-			},
+				window.location.hash = "messages";
+			},*/
 		
 			render: function () {
 				var compiledTemplate = _.template( newMessageTemplate );

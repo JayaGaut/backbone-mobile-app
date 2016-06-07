@@ -48,10 +48,14 @@ define([
 				//alert(JSON.stringify(this.collection));
 				
 				this.collection.each(function(messageModel) {
-					//console.log(messageModel.attributes.inbox);
 					var posts = {"posts": messageModel.attributes.inbox};
+					
+					localStorage["posts"] = JSON.stringify(posts);
+                    var msgForDelete = JSON.parse(localStorage["posts"]);
+
+					console.log(posts);
+					console.log(msgForDelete);
 					var messageViewInst = new MessageView({ model: messageModel });
-					//this.$el.append(messageViewInst.render().el);
 					this.$el.append(messageViewInst.render(posts).el);
 				}, this);
 

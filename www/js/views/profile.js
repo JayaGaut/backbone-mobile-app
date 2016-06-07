@@ -26,7 +26,7 @@ define([
 				dataType : "json",
 				type : "GET",
 				success : function ( data ) {
-					console.log( data );
+					console.log( data.user.id );
                     //sessionStorage.idUser = data.user.meta.meta_name;
 					//sessionStorage.img = data.user.avatar.url;
 					if( data.user.avatar != null ){

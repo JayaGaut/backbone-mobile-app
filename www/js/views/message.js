@@ -17,27 +17,13 @@ define([
 			    	withCredentials: true
 				},
 			});
-
-			/*utils.pageTitle = 'Message';
-			utils.headerTitle = 'MESSAGES';
-			this.collection = new MessageCollection();
-			this.listenTo(this.collection, 'add', this.addOne);
-			this.listenTo(this.collection, 'reset', this.addAll);
-			this.collection.fetch();*/
-			
-			/*this.collection.fetch().done(function(){
-			  this.render();
-			});*/
-			
 		},
 	
 	 render: function(posts) {
 			var compiledTemplate = _.template( messageTemplate );
-			
 			//this.$el.html(compiledTemplate(this.model.toJSON()));
 			this.$el.html(compiledTemplate(posts));
 			//return $(this.el).append(this.template(this.model.toJSON()));
-			//$el.html(compiledTemplate);
 			return this;
 		},
 	});

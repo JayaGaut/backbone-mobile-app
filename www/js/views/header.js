@@ -3,13 +3,16 @@ define([
   'underscore',
   'backbone',
   'router',
-  'text!templates/header_tpl.html'
-], function($, _, Backbone, Router, headerTemplate){
+  'models/message_model',
+  'views/messages',
+  'text!templates/header_tpl.html',
+  'text!templates/create_new_msg_tpl.html'
+], function($, _, Backbone, Router, MessageModel, MessagesView, headerTemplate, newMessageTemplate){
 	
 		var headerView = Backbone.View.extend({
 			router: {},
 			events: {
-				 
+				"click #submitPlane": "onClickSubmit",
 				"click #trash-icon": "deleteIcon",
 			<!--"click #alert-delete": "alertAelete",-->
 				"click #menu-icon": "displayMenu",
@@ -19,7 +22,7 @@ define([
 			},
 			
 			 deleteIcon: function() {
-				 window.location.href = '#messagedelete';
+				 window.location.href = '#messageDelete/<%= posts %>';
 			},
 			
 				displayMenu: function() {
@@ -49,6 +52,26 @@ define([
 				  } )( jQuery );
 				  
 			},
+
+			onClickSubmit: function(){
+				console.log("clicked submit");
+				console.log($('#messageContent').val());
+				console.log($('#subject').val());
+				MessageModelInst = new MessageModel();
+                MessageModelInst.set({'_token':sessionStorage._token,
+				                      'to': $('#to').val(),
+									  'cc':'', 'bcc':'',
+									  'subject': $('#subject').val(),
+									  'content':'<p>'+$('#messageContent').val()+'</p>'
+									  });
+                console.log(MessageModelInst.toJSON());
+				MessageModelInst.save();
+			},
+		
+			
+			
+			
+			
 			render: function () {
 				  //this.$el.html(this.template());
 				  var compiledTemplate = _.template( headerTemplate );
