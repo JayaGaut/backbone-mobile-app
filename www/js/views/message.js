@@ -23,22 +23,11 @@ define([
 				},
 			});
 		},
-		
+/*		
 		onClickDelete: function(e) {
-				 this.model.destroy({
-       success: function(model,response)
-            {
-                console.log("success");
-            },
-            error: function(model,response)
-            {
-                               // this triggers, but the model is always removed from the collection.
-                console.log("error");
-                console.log(self);
-            }
-        });
+				 this.model.destroy({});
 			},
-	
+*/	
 	 render: function(posts) {
 			var compiledTemplate = _.template( messageTemplate );
 			//this.$el.html(compiledTemplate(this.model.toJSON()));

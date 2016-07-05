@@ -11,15 +11,15 @@ define([
 	MessageModel, MessageView, messagesTemplate){
 	
 		var messagesView = Backbone.View.extend({
-			tagName: 'ul',
-			attributes: {
+			//tagName: 'ul',
+			/*attributes: {
 				id: 'messages_list',
 				class: 'regular-ul regular-list',
 				style: 'margin-top:43px !important;'
-			},
+			},*/
 			router: {},
 			events: {
-				"click .peple-chechbox": "clicked"
+				"click #delete": "onClickDelete"
 			},
             
 			initialize: function () {
@@ -27,33 +27,47 @@ define([
 				utils.headerTitle = 'MESSAGES';
 				this.collection = new MessagesCollection();
 				this.model = new MessageModel();
-				
+			
+					
 				//this.listenTo(this.collection, 'add', this.addOne);
 				this.listenTo(this.collection, 'reset', this.render);
-				//this.model.on("remove", this.onRemoveMessage, this);
 				this.listenTo(this.model, 'remove', this.onRemoveMessage);
 				//this.collection.bind("reset", this.render);
+				
 
 				this.collection.fetch({
-					reset: true
+					reset: true,
+					success:function(){
+               			 console.log(this.collection);
+   					}
 				});
 				
-				 console.log(this.collection);
+				//alert(JSON.stringify(this.collection));
 			},
+			
+				 onClickDelete: function(e) {
+				 console.log("clickeddddddddd");
+				 $("input:checked").each(function () {
+					var id = $(this).attr("data-id");
+					console.log("Do something for: " + id );
+					var model = this.collection.get(id);
+					console.log(model);
+					this.collection.destroy(model);
+					model.destroy({});
+					//console.log(this.collection);
+                });
+				/*console.log(this.model.id);
+				 e.preventDefault();
+                 var id = $(e.currentTarget).data("id");
+				 console.log(id);*/
+			},
+			
 			onRemoveMessage: function(MessageModel) {
 				 allert("20");
 				 console.log("removed", MessageModel);
 				 this.$("li#" + MessageModel.id).remove();
 				 
 			},
-			
-			 /*clicked: function(e) {
-				console.log(this.model.id);
-				console.log("clickeddddddddd");
-				 e.preventDefault();
-                 var id = $(e.currentTarget).data("id");
-				 console.log(id);
-			},*/
 
 			/*addOne: function (messageModel) {
 				console.log('adding one');
@@ -63,7 +77,10 @@ define([
 			},*/
 
 			render: function () {
-				console.log(this.collection.length);
+				var compiledTemplate = _.template( messagesTemplate );
+				this.$el.html(compiledTemplate());
+				
+				//alert(this.collection);
 				//alert(JSON.stringify(this.collection));
 				
 				this.collection.each(function(messageModel) {

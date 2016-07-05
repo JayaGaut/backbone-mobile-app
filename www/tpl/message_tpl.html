@@ -1,7 +1,8 @@
+
 <% _.each(posts, function(obj) { %>
 
 <li id= "<%= obj.id %>" class="border-bottom-dotted-gray padding-bottom-10px">
-<button id='delete'> Delete </button>
+
     <a href="#messageSecond/<%= obj._init.sender_name %>/<%= obj.subject %>/<%= (obj._init.sentDate).substr(11, 8) %>/<%=        (obj.content).substring(3, obj.content.length - 4) %>">
         <div class="message-time color-7D7D7D font-size-11px">  <%= (obj._init.sentDate).substr(11, 8) %> </div>
         <div class="left-checkbox">
@@ -22,5 +23,6 @@
         </div>
     </a>
 </li> 
+
 
 <% }); %>
