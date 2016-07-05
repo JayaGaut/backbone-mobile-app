@@ -1,8 +1,12 @@
 <% _.each(posts, function(obj) { %>
 
-<li class="border-bottom-dotted-gray padding-bottom-10px">
+<li id= "<%= obj.id %>" class="border-bottom-dotted-gray padding-bottom-10px">
+<button id='delete'> Delete </button>
     <a href="#messageSecond/<%= obj._init.sender_name %>/<%= obj.subject %>/<%= (obj._init.sentDate).substr(11, 8) %>/<%=        (obj.content).substring(3, obj.content.length - 4) %>">
         <div class="message-time color-7D7D7D font-size-11px">  <%= (obj._init.sentDate).substr(11, 8) %> </div>
+        <div class="left-checkbox">
+                <input type="checkbox" class="peple-chechbox" data-id="<%= obj.id %>">
+            </div>
         <div class="img-message">
             <img class="img-circle thumbnail" src="pics/student.jpg" height="47px" width="47px" />
         </div>

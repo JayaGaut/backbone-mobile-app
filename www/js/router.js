@@ -23,7 +23,7 @@ define([
 				"messages": "messages",
 				"messageSecond/:sender_name/:subject/:sentDate/:content": "messageSecond",
 				"new_message": "new_message",
-				"messageDelete/:posts": "messageDelete"
+				"messageDelete": "messageDelete"
 			},
 		
 		   login: function () {
@@ -107,9 +107,8 @@ define([
         
            },
 		   
-		   messageDelete: function (posts) {
+		   messageDelete: function () {
 				messageDeleteViewInst = new messageDeleteView();
-				messageDeleteViewInst.posts = posts;
 				messageDeleteViewInst.render();
 				
 				headerViewInst = new headerView();

@@ -22,7 +22,7 @@ define([
 			},
 			
 			 deleteIcon: function() {
-				 window.location.href = '#messageDelete/<%= posts %>';
+				 console.log("clickDeleteButton");
 			},
 			
 				displayMenu: function() {

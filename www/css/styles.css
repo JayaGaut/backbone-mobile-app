@@ -440,9 +440,9 @@
 	}
 	
 	.left-checkbox{
-		float: left;
+		float: right;
 		margin-top: 36px;
-		margin-left: 16px;
+		margin-right: -52px;
 	}
 	
 	.form-control{
@@ -532,8 +532,8 @@
 		display: inline-block;
 		bottom: 28px;
 		right: 12px;
-		width:22px !important;
-		height:20px !important;
+		width:16px !important;
+		height:16px !important;
 	}
 	
 	.do-action {

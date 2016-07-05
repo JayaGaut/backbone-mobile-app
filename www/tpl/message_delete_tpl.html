@@ -1,5 +1,6 @@
 <ul class="regular-ul regular-list" style="margin-top:43px !important;">
-<% _.each(posts, function(obj) { %>
+
+
 
    <li class="border-bottom-dotted-gray padding-bottom-10px">
         <a>
@@ -9,7 +10,7 @@
             </div>
 
             <div class="message-info">
-                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= obj.subject %> </span>
+                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= obj.content %> </span>
                 <br />
                 <span class="color-525252 font-size-12px font-bold"> Subject </span>
                 <br />
@@ -20,7 +21,7 @@
         </a>
     </li> 
     
-<% }); %>
+
 
 </ul>
 <div class="do-action">

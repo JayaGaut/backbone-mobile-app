@@ -15,6 +15,7 @@ require.config({
     jquery: 'libs/jquery/jquery.min',
     underscore: 'libs/underscore',
     backbone: 'libs/backbone.min',
+	require:'libs/require/require',
     templates: '../tpl'
   }
 
