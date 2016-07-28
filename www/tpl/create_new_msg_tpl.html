@@ -1,14 +1,14 @@
 <div class="messageBackground">
     <form action="">
         <div class="boxInput">
-            <input id= "to" class="message-small-input" type="text" name="name" value="">
+            <input id= "to" class="message-small-input" type="text" name="name" value="<%= sender_id %>"> 
             <a href="#choosepeople" class="line-height-36px"><i class="fa fa-user-plus font-size-24px"></i></a>
         </div>
         <div class="boxInput">
-            <input id= "subject" class="message-small-input" type="text" name="Subject" value="">
+            <input id= "subject" class="message-small-input" type="text" name="Subject" value="<%= subject %>">
         </div>
         <div class="boxInput">
-            <input id= "messageContent" class="message-big-input" type="text" name="text" value=" ">
+            <textarea id= "messageContent" class="message-big-input" type="text" name="text" value=" "></textarea>
 
         </div>
     </form>

@@ -31,41 +31,62 @@ define([
 					
 				//this.listenTo(this.collection, 'add', this.addOne);
 				this.listenTo(this.collection, 'reset', this.render);
-				this.listenTo(this.model, 'remove', this.onRemoveMessage);
+				this.listenTo(this.collection, 'remove', this.render);
 				//this.collection.bind("reset", this.render);
+				 
 				
 
 				this.collection.fetch({
 					reset: true,
 					success:function(){
-               			 console.log(this.collection);
+               			// console.log(this.collection);
    					}
 				});
-				
-				//alert(JSON.stringify(this.collection));
 			},
-			
+			     
 				 onClickDelete: function(e) {
-				 console.log("clickeddddddddd");
-				 $("input:checked").each(function () {
-					var id = $(this).attr("data-id");
-					console.log("Do something for: " + id );
-					var model = this.collection.get(id);
-					console.log(model);
-					this.collection.destroy(model);
-					model.destroy({});
-					//console.log(this.collection);
-                });
-				/*console.log(this.model.id);
-				 e.preventDefault();
-                 var id = $(e.currentTarget).data("id");
-				 console.log(id);*/
+					 //console.log("this is model:" + this.collection.get("c7").cid);
+					 var collection = this.collection;
+					 console.log("clickeddddddddd");
+					 
+					 $("input:checked").each(function () {
+						var id = $(this).attr("data-id");
+						console.log("Do something for: " + id );
+						var model = collection.get(id);
+						console.log(model);
+						collection.remove(model);
+						model.destroy();
+						
+						$.ajax({
+						  url: utils.baseUrlApi + "/student/bulk/messages",
+						  dataType: "json",
+						  type : "POST",
+						  data : {
+							_token : sessionStorage._token,
+							action : "delete",
+							items : [ model.id ]
+						  },
+						  headers : {
+						   'X-Requested-With' : 'XMLHttpRequest',
+						  },
+						  xhrFields: {
+							withCredentials: true,
+						  },
+						  success : function(r) {
+							console.log(r);
+						  },
+						  error : function(r) {
+							console.log(r);
+						  }
+						});
+
+					});
 			},
 			
-			onRemoveMessage: function(MessageModel) {
+			onRemoveMessage: function() {
 				 allert("20");
-				 console.log("removed", MessageModel);
-				 this.$("li#" + MessageModel.id).remove();
+				 //console.log("removed", MessageModel);
+				 //this.$("li#" + MessageModel.id).remove();
 				 
 			},
 
@@ -79,17 +100,18 @@ define([
 			render: function () {
 				var compiledTemplate = _.template( messagesTemplate );
 				this.$el.html(compiledTemplate());
-				
-				//alert(this.collection);
 				//alert(JSON.stringify(this.collection));
-				
-				this.collection.each(function(messageModel) {
-					var posts = {"posts": messageModel.attributes.inbox};
-					console.log(posts);
+				var models = this.collection;
+				console.log(models);
+				var messageViewInst = new MessageView({ model: this.model });
+				this.$el.append(messageViewInst.render(models).el);
+				/*this.collection.attributes.inbox.each(function(messageModel) {
+					console.log(messageModel.get(id));
+					//var posts = {"cid": messageModel.cid , "posts": messageModel.attributes.inbox};
+					//console.log(posts);
 					var messageViewInst = new MessageView({ model: messageModel });
 					this.$el.append(messageViewInst.render(posts).el);
-				}, this);
-
+				}, this);*/ 
 				return this;
 			},
 		});

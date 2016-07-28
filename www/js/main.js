@@ -1,5 +1,5 @@
 var utils = {
-	baseUrlApi: 'http://mentorina.staging.dpm.co.com',
+	baseUrlApi: 'http://mentorinav3.staging.dpm.co.com',
     headerTitle: '',
     pageTitle: '',
     idUser: '',

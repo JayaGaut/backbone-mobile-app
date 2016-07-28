@@ -1,136 +1,71 @@
-directory.CoursesView = Backbone.View.extend({
-    courses: [],
-    //url : utils.baseUrl + '/api/course/byUserId/' + utils.idUser,
-    events: {
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router',
+    'text!templates/courses_tpl.html',
+], function ($, _, Backbone, Router, coursesTemplate) {
 
-        "click #buttonCurrent": "clickCurrent",
-        "click #buttonPast": "clickPast"
-    },
+    var coursesView = Backbone.View.extend({
+		courses: [],
+            router: {},
 
-    initialize: function () {
-        console.log('Initializing CoursesView View');
-        utils.headerTitle = 'MY COURSES';
-        utils.pageTitle = 'Courses';
-		
-        var url = utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent;
-        var closure = this;
-                closure.courses = [];
-                $.ajax({
-                    url: url,
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        //alert('test');
-                        var today = new Date();
-                        var dd = today.getDate();
-                        var mm = today.getMonth() + 1; //January is 0!
-                        var yyyy = today.getFullYear();
-                        if (dd < 10) {
-                            dd = '0' + dd
-                        }
-                        if (mm < 10) {
-                            mm = '0' + mm
-                        }
+            events: {},
 
-                        today = yyyy + '-' + mm + '-' + dd;
-                        for (var i = 0, len = data.length; i < len; i++) {
-                            var myDate = data[i].endDate;
-                            if (myDate > today) {
-                                closure.courses.push(data[i]);
-                                utils.courses = closure.courses;
-                                closure.render();
-                            }
-                        }
+            initialize: function () {
+				var post = {};
+                utils.pageTitle = 'My Courses';
+                utils.headerTitle = 'My Courses';
+
+                $.ajaxSetup({
+                    xhrFields: {
+                        withCredentials: true
                     },
-                    error: function (xhr, status, error) {
-                        alert(status);
+                });
+
+                console.log('courseIndex...');
+                var closure = this;
+
+                $.ajax({
+                    url: utils.baseUrlApi + "/student/courses?type=all",
+                    dataType: "json",
+                    type: "GET",
+                    headers : {
+                        'X-Requested-With' : 'XMLHttpRequest',
+                    },
+                    xhrFields: {
+                        withCredentials: true,
+                    },
+                    success: function (data) {
+
+                        // closure.courses = data;
+                        // console.log(closure.courses);
+                        // console.log(closure.courses.length);
+
+                        function logArrayElements(object, array) {
+                            console.log( object.id + ' ' + object.department_id);
+                            closure.courses.push(object);
+							
+                        }
+
+                        data.forEach(logArrayElements);
+                        console.log(closure.courses);
+
+                    },
+
+                    error: function (jqXHR, exception) {
+                        console.log(jqXHR.status);
+
                     }
                 });
-                closure.render();
-    },
-    clickCurrent: function (event) {
-        $("#buttonPast").addClass("active-link");
-        var url = utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent;
-        var closure = this;
-        closure.courses = [];
-        $.ajax({
-            url: url,
-            contentType: 'application/json',
-            dataType: 'json',
-            type: 'GET',
-            success: function (data) {
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
-                var yyyy = today.getFullYear();
-                if (dd < 10) {
-                    dd = '0' + dd
-                }
-                if (mm < 10) {
-                    mm = '0' + mm
-                }
-
-                today = yyyy + '-' + mm + '-' + dd;
-                for (var i = 0, len = data.length; i < len; i++) {
-                    var myDate = data[i].endDate;
-                    if (myDate > today) {
-                        closure.courses.push(data[i]);
-                        utils.courses = closure.courses;
-                        closure.render();
-                    }
-                }
             },
-            error: function (xhr, status, error) {
-                alert(status);
+
+            render: function () {
+                var compiledTemplate = _.template(coursesTemplate);
+                this.$el.html(compiledTemplate(this.courses));
+                return this;
             }
         });
-        closure.render();   
-    },
-    clickPast: function () {
-        var url = utils.baseUrl + '/api/course/findByStudentId/' + sessionStorage.idStudent;
-        var closure = this;
-        closure.courses = [];
-        $.ajax({
-            url: url,
-            contentType: 'application/json',
-            dataType: 'json',
-            type: 'GET',
-            success: function (data) {
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
-                var yyyy = today.getFullYear();
-                if(dd<10) {
-                    dd='0'+dd
-                } 
-                if(mm<10) {
-                    mm='0'+mm
-                } 
 
-                today = yyyy+'-'+mm+'-'+dd;
-                for (var i=0, len=data.length; i < len; i++) {
-                    var myDate = data[i].endDate;
-                    if(myDate < today){
-                        closure.courses.push(data[i]);
-                        utils.courses = closure.courses;
-						closure.render();
-						$('#buttonCurrent').removeClass('active-link');
-                        $('#buttonPast').addClass('active-link');   
-                    }
-                }
-            },
-            error: function (xhr, status, error) {
-                alert(status);
-            }
-        });
-        closure.render();
-    },
-    render: function () {
-        $(this.el).html(this.template());
-        return this;
-        
-    },
+    return coursesView;
 });
-
-

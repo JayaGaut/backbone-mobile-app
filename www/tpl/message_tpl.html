@@ -1,10 +1,10 @@
 
-<% _.each(posts, function(obj) { %>
+<% _.each(models, function(obj) { %>
 
-<li id= "<%= obj.id %>" class="border-bottom-dotted-gray padding-bottom-10px">
+<li id= "<%= obj.id %>" class="border-bottom-dotted-gray padding-bottom-10px regular-list">
 
-    <a href="#messageSecond/<%= obj._init.sender_name %>/<%= obj.subject %>/<%= (obj._init.sentDate).substr(11, 8) %>/<%=        (obj.content).substring(3, obj.content.length - 4) %>">
-        <div class="message-time color-7D7D7D font-size-11px">  <%= (obj._init.sentDate).substr(11, 8) %> </div>
+    <a href="#messageSecond/<%= obj.attributes.sender.meta_name %>/<%= obj.attributes.sender.id %>/<%= obj.attributes.subject %>/<%= (obj.attributes._init.sentDate).substr(11, 8) %>/<%= (obj.attributes.content).substring(3, obj.attributes.content.length - 4) %>">
+        <div class="message-time color-7D7D7D font-size-11px">   <%= (obj.attributes._init.sentDate).substr(11, 8) %> </div>
         <div class="left-checkbox">
                 <input type="checkbox" class="peple-chechbox" data-id="<%= obj.id %>">
             </div>
@@ -13,12 +13,13 @@
         </div>
 
         <div class="message-info">
-            <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= obj._init.sender_name%> </span>
+            <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold">
+             <%= obj.attributes._init.sender_name%> </span>
             <br />
-            <span class="color-525252 font-size-12px font-bold"> <%= obj.subject %> </span>
+            <span class="color-525252 font-size-12px font-bold"> <%= obj.attributes.subject %> </span>
             <br />
             <div class="color-525252 font-size-11px font-italic">
-                <span> <%= obj.content %> </span>
+                <span> <%= obj.attributes.content %> </span>
             </div>
         </div>
     </a>

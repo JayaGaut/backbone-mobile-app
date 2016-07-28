@@ -4,7 +4,7 @@
             </div>
 
     <div class="message-info">
-                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= sender_name %> </span>
+                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= sender_name %><%= sender_id %> </span>
                 <br />
                 <span class="color-525252 font-size-12px font-bold"> <%= subject %> </span>
                 <br />
@@ -19,6 +19,6 @@
        <%= content %>
     </span>
 </div>
-<a href="#messagereply">
+<a href="#message_reply/<%= sender_id %>/<%= subject %>">
     <button class="do-action btn-reply"> REPLY </button>
 </a>

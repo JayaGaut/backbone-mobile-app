@@ -8,12 +8,10 @@ define([
 	var ProfileView = Backbone.View.extend({
 	
 		initialize: function () {
-			//console.log('Initializing ProfileView');
 			utils.pageTitle = 'Profile';
-			utils.headerTitle = 'PROFILE';
-			
+			utils.headerTitle = 'Profile';
             event.preventDefault(); // Don't let this button submit the form
-            console.log('profile..');
+            // console.log('profile..');
 
 		},
 	
@@ -26,6 +24,7 @@ define([
 				dataType : "json",
 				type : "GET",
 				success : function ( data ) {
+					console.log( data );
 					console.log( data.user.id );
                     //sessionStorage.idUser = data.user.meta.meta_name;
 					//sessionStorage.img = data.user.avatar.url;
@@ -40,7 +39,6 @@ define([
 					sessionStorage.UserName = data.user.first_name + ' ' + data.user.last_name;
 					var compiledTemplate = _.template( profileTemplate);
 		            closure.$el.html(compiledTemplate({urlAvatar: utils.baseUrlApi + sessionStorage.urlAvatar,UserName:sessionStorage.UserName}));
-					//console.log(urlAvatar);
 					//closure.$el.html(compiledTemplate({img: sessionStorage.img}));
 					$('#UserName').text(sessionStorage.UserName);
 					

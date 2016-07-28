@@ -9,6 +9,7 @@ define([
 	
 	var messageSecondView = Backbone.View.extend({
 		sender_name: '',
+		sender_id: '',
 		subject: '',
 		sentDate: '',
 		content: '',
@@ -16,7 +17,8 @@ define([
 		router: {},
 		events: {},
 		initialize: function () {
-			console.log("3");
+			utils.pageTitle = 'MessageSecond';
+		    utils.headerTitle = 'MESSAGESSECOND';
 			$.ajaxSetup({
 				xhrFields: {
 			    	withCredentials: true
@@ -25,7 +27,7 @@ define([
 		},
 	
 	 render: function() {
-			var data = {sender_name : this.sender_name, subject : this.subject, sentDate : this.sentDate, content : this.content};
+			var data = {sender_name : this.sender_name, sender_id : this.sender_id, subject : this.subject, sentDate : this.sentDate, content : this.content};
 			var compiledTemplate = _.template( messageSecondTemplate );
 			this.$el.html(compiledTemplate(data));
 			

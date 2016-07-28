@@ -1,34 +1,58 @@
-<div style="margin-top:43px;">
-    <div class="detail-info">
-        <span class="course-name">
-            <%= this.course.name%>
-        </span>
-            <br />
-        <span class="prof-name">
-            <!--<%=this.course.professor_id%>-->
-            professor: <%= this.profName %>
-            <br />
-            Section: <%= this.course.section%>
-        </span>
-     
-    </div>
+<div class="container">
 
-    <div class="message-text">
-        <%= this.course.outline%>
-    </div>
-    <div class="pages-link ">
-         <a href = "#coursenotification">
-        <div class="background-color-0f487f height_50px display_text_center color-white font-size-18px"><i class="fa fa-bell-o font-size-24px"></i> Course Notifications </div>
-        </a>
-        <a href = "#teacherreports">
-            <div class="background-color-2b7dbc height_50px display_text_center color-white font-size-18px"><i class="fa fa-file-text-o font-size-24px"></i> Teacher Reports </div>
-        </a>
-        
-        <a href = "#achievement/<%= this.course.name %>">
-            <div class="background-color-0f487f height_50px display_text_center color-white font-size-18px"><i class="fa fa-trophy font-size-24px">            </i> My Achievements </div>
-        </a>
-        
-    </div>
+    <div class="col-md-12" id="class details" style="position: relative;margin:0 auto;line-height: 1.4em;">
 
+
+        <ul id="details" style="margin-right: 2%; display: inline; padding-right: 12%;position: relative">
+
+            <li>
+                <div id="subject2">
+
+                    <h5>Computer Science</h5>
+
+                </div>
+
+                <p id="prof_name" style="color: #134b6d;float: left;font-weight: bold;">Professor: Joe Smith</p>
+                <p id="section" style="color: #134b6d; float: right;font-weight: bold;">Section: 2</p>
+
+                <hr style="width:100% ">
+
+                <p id="course_details"
+                   style="border-radius:8px; background-color:#EEEEEE; width: 100%; padding:2%; margin-top:5%;    line-height: 150%; ; ">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and
+                    scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                    essentially unchanged. <span style="color: #4285F4; float: right; margin-top: 2%">Read More</span>
+                </p>
+
+
+                <div style="text-align: center; padding: 4%;padding-left: 2%; margin-top: 10%;">
+
+                    <i class="fa fa-file-text fa-2x" aria-hidden="true"
+                       style="color: #134b6d; float: left; margin-left: -30px"
+                       aria-hidden="true"><p
+                            style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center;font-family: sans-serif">
+                        My
+                        Files</p></i>
+
+                    <a href="#personalized">
+                        <i class="fa fa-bar-chart fa-2x" aria-hidden="true" style="color: #134b6d;  "
+                           style=" vertical-align: middle;"><p
+                                style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center; font-family:sans-serif ">
+                            Personalized <br> Report</p></i>
+                    </a>
+                    <i class="fa fa-code-fork fa-2x" aria-hidden="true" style="color: #134b6d; float: right "
+                       aria-hidden="true"><p
+                            style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center; font-family: sans-serif">
+                        Adaptive <br>Learning</p></i>
+                </div>
+            </li>
+
+
+        </ul>
+
+
+    </div>
 </div>
- 

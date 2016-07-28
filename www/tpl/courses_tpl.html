@@ -1,26 +1,38 @@
-<div style="margin-top:43px;">
-   <ul class="tabs-link">
-       <li><a  id="buttonCurrent" class="active-link"> Current <span><i class="fa fa-caret-up"></i></span></a></li>
-       <li><a  id="buttonPast"> Past <span><i class="fa fa-caret-up"></i></span></a></li>
-   </ul>
-    
-<!-- /*<div style="height:40px; background-color:blue;">
-        <button id="buttonCurrent" class="button-past-curr">Current</button>
-        <button id="buttonPast" class="button-past-curr">Past</button>
-    </div> */ --> 
-<ul class="regular-ul">
-    <% _.each( this.courses, function(course,i) { %>
-    <li class="repeated-li">
-        <div class="circle margin-left-10px margin-top-10px float-left">
-            ICON
-        </div>
-        <a class="course-info" href="#coursedetail/<%= course.id %>/<%= i %>"><%= course.name %>
-            <i class="fa fa-chevron-right fa-2x chevron-right-icon"></i>
-        </a>
-        
-    </li>
-    <!--<li> <%= course.id %> </li>-->
-    <% });%>
-</ul>
-    </div>      
- 
+
+<div class="row" style="display: block; ">
+
+    <ul style="margin-top: 10px;">
+    <% _.each(this.courses, function(obj) { %>
+
+        <li style="margin-left: -30px;">
+            <a href="#course_detail">
+
+                <p class="date" id="End_date"
+                   style="color: #134b6d;float: right; font-size: 12px;padding: 2%;margin-right: 8px; ">End Date: <br> 
+                </p>
+                <p class="date" id="start_date" style=";color: #134b6d;float: right;font-size: 12px; padding: 2%">Start
+                    Date:<br>2016-06-30
+                </p>
+
+
+                <i class="fa fa-calendar fa-2x" aria-hidden="true" style="float: right;color: #134b6d;padding: 2%"></i>
+
+
+                <div id="subject" style="text-align: center"><p>Computer Science &nbsp </p></div>
+                <br>
+
+                <p id="prof_name"
+                   style="color: #134b6d; float: left;  margin-left: 15px;font-size: 12px; margin-top: 5%">
+                    Professor: Joe Smith</p>
+
+                <hr style="width:100% ">
+            </a>
+        </li>
+        <% });%>
+    </ul>
+
+
+</div>
+
+
+</div>

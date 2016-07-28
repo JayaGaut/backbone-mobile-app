@@ -28,10 +28,10 @@ define([
 				 this.model.destroy({});
 			},
 */	
-	 render: function(posts) {
+	 render: function(models) {
 			var compiledTemplate = _.template( messageTemplate );
+			this.$el.html(compiledTemplate(models));
 			//this.$el.html(compiledTemplate(this.model.toJSON()));
-			this.$el.html(compiledTemplate(posts));
 			//return $(this.el).append(this.template(this.model.toJSON()));
 			return this;
 		},
