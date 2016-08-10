@@ -8,6 +8,10 @@ define([
 
     var cognitiveReportView = Backbone.View.extend({
         courseId :'',
+        courseName: '',
+        teacherName: '',
+        section: '',
+        outline: '',
         session_name: [],
         class_session_cognitive: [],
         student_session_cognitive: [],
@@ -22,7 +26,7 @@ define([
             var session_name = [];
             var class_session_cognitive = [];
             var student_session_cognitive = [];
-            var data = {courseId : this.courseId };
+            var data = {courseId : this.courseId};
             $.ajaxSetup({
                 xhrFields: {
                     withCredentials: true
@@ -67,43 +71,44 @@ define([
         },
 
         render: function () {
+            var info = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, sessions: this.sessions, section : this.section, outline : this.outline};
             var compiledTemplate = _.template(cognitiveReportTemplate);
-            this.$el.html(compiledTemplate);
+            this.$el.html(compiledTemplate(info));
 
-                this.$('#con').highcharts({
-                    chart: {
-                        type: 'line'
-                    },
+            this.$('#con').highcharts({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Cognitive Skills ' + sessionStorage.FirstName + ' vs class'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: this.session_name
+                },
+                yAxis: {
                     title: {
-                        text: 'Cognitive Skills ' + sessionStorage.FirstName + ' vs class'
-                    },
-                    subtitle: {
                         text: ''
-                    },
-                    xAxis: {
-                        categories: this.session_name
-                    },
-                    yAxis: {
-                        title: {
-                            text: ''
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: false
-                        }
-                    },
-                    series: [{
-                        name: 'Student',
-                        data: this.student_session_cognitive
-                    }, {
-                        name: 'Class',
-                        data: this.class_session_cognitive
-                    }]
-                });
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Student',
+                    data: this.student_session_cognitive
+                }, {
+                    name: 'Class',
+                    data: this.class_session_cognitive
+                }]
+            });
 
             return this;
         }

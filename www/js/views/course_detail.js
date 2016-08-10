@@ -7,6 +7,11 @@ define([
 ], function($, _, Backbone, Router, courseDetailTemplate){
 
     var courseDetailView = Backbone.View.extend({
+        courseId: '',
+        courseName: '',
+        teacherName: '',
+        section: '',
+        outline: '',
         router: {},
 
         events: {},
@@ -14,7 +19,6 @@ define([
         initialize: function () {
             utils.pageTitle = 'courseDetail';
             utils.headerTitle = 'My Courses';
-            // console.log(utils.pageTitle);
             console.log("course....detail");
             $.ajaxSetup({
                 xhrFields: {
@@ -24,8 +28,9 @@ define([
         },
 
         render: function() {
+            var data = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, section : this.section, outline : this.outline};
             var compiledTemplate = _.template( courseDetailTemplate );
-            this.$el.html(compiledTemplate);
+            this.$el.html(compiledTemplate(data));
             return this;
         },
     });

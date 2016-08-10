@@ -7,16 +7,17 @@ define([
 ], function ($, _, Backbone, Router, coursesTemplate) {
 
     var coursesView = Backbone.View.extend({
-		courses: [],
+        courses : [],
             router: {},
 
             events: {},
 
             initialize: function () {
-				var post = {};
                 utils.pageTitle = 'My Courses';
                 utils.headerTitle = 'My Courses';
+            },
 
+            courseIndex:function () {
                 $.ajaxSetup({
                     xhrFields: {
                         withCredentials: true
@@ -25,7 +26,7 @@ define([
 
                 console.log('courseIndex...');
                 var closure = this;
-
+                var courses = [];
                 $.ajax({
                     url: utils.baseUrlApi + "/student/courses?type=all",
                     dataType: "json",
@@ -37,20 +38,14 @@ define([
                         withCredentials: true,
                     },
                     success: function (data) {
-
-                        // closure.courses = data;
-                        // console.log(closure.courses);
-                        // console.log(closure.courses.length);
-
+                        closure.courses = [];
                         function logArrayElements(object, array) {
-                            console.log( object.id + ' ' + object.department_id);
                             closure.courses.push(object);
-							
                         }
 
                         data.forEach(logArrayElements);
-                        console.log(closure.courses);
-
+                        //console.log(closure.courses);
+                        closure.render();
                     },
 
                     error: function (jqXHR, exception) {
@@ -58,11 +53,12 @@ define([
 
                     }
                 });
-            },
 
+            },
             render: function () {
+                // console.log(this.courses.length);
                 var compiledTemplate = _.template(coursesTemplate);
-                this.$el.html(compiledTemplate(this.courses));
+                this.$el.html(compiledTemplate({courses: this.courses}));
                 return this;
             }
         });

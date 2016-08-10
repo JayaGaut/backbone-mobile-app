@@ -37,6 +37,8 @@ define([
 					}
 					
 					sessionStorage.UserName = data.user.first_name + ' ' + data.user.last_name;
+					sessionStorage.FirstName = data.user.first_name;
+
 					var compiledTemplate = _.template( profileTemplate);
 		            closure.$el.html(compiledTemplate({urlAvatar: utils.baseUrlApi + sessionStorage.urlAvatar,UserName:sessionStorage.UserName}));
 					//closure.$el.html(compiledTemplate({img: sessionStorage.img}));

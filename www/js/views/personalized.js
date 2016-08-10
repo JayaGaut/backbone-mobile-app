@@ -6,7 +6,11 @@ define([
 ], function($, _, Backbone, personalizedTemplate) {
 
 	var personalizedView = Backbone.View.extend({
-	
+		courseId: '',
+		courseName: '',
+		teacherName: '',
+		section: '',
+		outline: '',
 		initialize: function () {
 			utils.pageTitle = 'personalizedReport';
 			utils.headerTitle = 'Personalized Report';
@@ -14,10 +18,11 @@ define([
             // console.log('personalized');
 
 		},
-	
+
 		render: function () {
+			var data = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, section : this.section, outline : this.outline };
 			var compiledTemplate = _.template(personalizedTemplate);
-			this.$el.html(compiledTemplate);
+			this.$el.html(compiledTemplate(data));
 			return this;
 		}
 	});

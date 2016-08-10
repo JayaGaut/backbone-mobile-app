@@ -5,9 +5,10 @@ define([
     'router',
     'models/message_model',
     'views/messages',
+    'views/personalized',
     'text!templates/header_tpl.html',
     'text!templates/create_new_msg_tpl.html'
-], function ($, _, Backbone, Router, MessageModel, MessagesView, headerTemplate, newMessageTemplate) {
+], function ($, _, Backbone, Router, MessageModel, MessagesView, personalizedView, headerTemplate, newMessageTemplate) {
 
     var headerView = Backbone.View.extend({
         router: {},
@@ -21,18 +22,17 @@ define([
         },
         initialize: function () {
         },
-        back: function () {
-            if (utils.pageTitle == "courseDetail") {
-                window.location.hash = "courses";
-            } else if (utils.pageTitle == "personalizedReport") {
-                window.location.hash = "course_detail";
-            } else if (utils.pageTitle == "sessionReport") {
-                window.location.hash = "personalized";
-            } else if (utils.pageTitle == "sessionReportDetail") {
-                window.location.hash = "session_report";
-            }
-
-        },
+        // back: function () {
+        //     if (utils.pageTitle == "courseDetail") {
+        //         window.location.hash = "courses";
+        //     } else if (utils.pageTitle == "personalizedReport") {
+        //     } else if (utils.pageTitle == "sessionReport") {
+        //         window.location.hash = "personalized";
+        //     } else if (utils.pageTitle == "sessionReportDetail") {
+        //         window.location.hash = "session_report";
+        //     }
+        //
+        // },
 
         deleteIcon: function () {
             console.log("clickDeleteButton");

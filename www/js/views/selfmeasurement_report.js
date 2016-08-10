@@ -8,6 +8,10 @@ define([
 
     var selfmeasurementReportView = Backbone.View.extend({
         courseId :'',
+        courseName: '',
+        teacherName: '',
+        section: '',
+        outline: '',
         session_name: [],
         class_session_selfmeasurement: [],
         student_session_selfmeasurement: [],
@@ -67,8 +71,9 @@ define([
         },
 
         render: function () {
+            var info = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, sessions: this.sessions, section : this.section, outline : this.outline};
             var compiledTemplate = _.template(selfmeasurementReportTemplate);
-            this.$el.html(compiledTemplate);
+            this.$el.html(compiledTemplate(info));
 
                 this.$('#con').highcharts({
                     chart: {

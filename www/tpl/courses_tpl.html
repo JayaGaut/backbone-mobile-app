@@ -1,38 +1,65 @@
 
-<div class="row" style="display: block; ">
-
-    <ul style="margin-top: 10px;">
-    <% _.each(this.courses, function(obj) { %>
-
-        <li style="margin-left: -30px;">
-            <a href="#course_detail">
-
-                <p class="date" id="End_date"
-                   style="color: #134b6d;float: right; font-size: 12px;padding: 2%;margin-right: 8px; ">End Date: <br> 
-                </p>
-                <p class="date" id="start_date" style=";color: #134b6d;float: right;font-size: 12px; padding: 2%">Start
-                    Date:<br>2016-06-30
-                </p>
-
-
-                <i class="fa fa-calendar fa-2x" aria-hidden="true" style="float: right;color: #134b6d;padding: 2%"></i>
-
-
-                <div id="subject" style="text-align: center"><p>Computer Science &nbsp </p></div>
-                <br>
-
-                <p id="prof_name"
-                   style="color: #134b6d; float: left;  margin-left: 15px;font-size: 12px; margin-top: 5%">
-                    Professor: Joe Smith</p>
-
-                <hr style="width:100% ">
-            </a>
-        </li>
-        <% });%>
-    </ul>
-
-
+<div class="row" style="margin-top: 100px">
+    <div class="col-md-12" style="position: static">
+        <div class="card" style=" display: inline">
+            <ul class="nav nav-tabs" role="tablist"
+                style="background-color:transparent; box-shadow: -2px -2px 2px #E0E0E0; ">
+                <li role="presentation" class="active" style="width: 50%"><a href="#CURRENT" aria-controls="current"
+                                                                             role="tab"
+                                                                             data-toggle="tab">CURRENT</a></li>
+                <li role="presentation" style="width: 50%"><a href="#PAST" aria-controls="PAST" role="tab"
+                                                              data-toggle="tab">PAST</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+<ul style="margin-top: 10px;">
+    <% _.each(courses, function(obj) { %>
+
+    <% var courseName = '';
+    var section = '';
+    var outline = '';
+
+    for (i=0; i < obj.meta.length; i++) { %>
+    <% if( obj.meta[i].name == "name" ) { courseName = obj.meta[i].value; %>
+    <% } else if ( obj.meta[i].name == "section" ){ section = obj.meta[i].value; %>
+    <% } else if ( obj.meta[i].name == "outline" ){ outline = obj.meta[i].value; %>
+    <% } %>
+    <% } %>
+
+    <li style="margin-left: -50px;">
+        <a href="#course_detail/<%= obj.id %>/<%= courseName %>/<%= obj.teachers[0].meta_name%>/<%= section %>/<%= outline %>">
+
+            <div class="card" style="height: 100px">
+                <div class="card-block" style="margin-top: 10px">
+                    <p class="card-text" id="subject"><%= courseName %></p>
+
+                    <p id="prof_name"
+                       style="color: #134b6d;font-size: 10px; margin-top: 10px;margin-left: 20px">
+                        <%= obj.teachers[0].meta_name%> <Br> </p>
+
+                    <div style="margin-top: -90px;width: 80px;float: right">
+
+                        <p class="date" id="Start_date"
+                           style="color: #134b6d; font-size: 8.5px;padding: 1% ">
+                            Start Date <br> <span style="color: #4285F4;"><%= obj.created_at %> </span>
+                        </p>
+                        <p class="date" id="End_date"
+                           style="color: #134b6d; font-size: 8.5px;padding: 1%;; ">
+                            End Date <br> <span style="color: #4285F4;"><%= obj.updated_at %></span>
+                        </p>
 
 
-</div>
+
+                    </div>
+                    <i class="fa fa-calendar" aria-hidden="true"
+                       style="color: #134b6d;margin-top: -56px;float: right;margin-right: 15px"></i>
+                </div>
+
+
+            </div>
+
+        </a>
+    </li>
+    <% });%>
+</ul>

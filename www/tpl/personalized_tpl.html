@@ -1,13 +1,19 @@
+<div class="row back" >
+    <a href="#course_detail/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
+        <i id="back_btn" class="fa fa-angle-left fa-2x back_btn" aria-hidden="true"></i>
+    </a>
+</div>
+
 <div class="container" style="display: block;text-align: center">
 
     <div style="margin-top: 70px;">
         <div class="row">
-            <a href="#session_report">
-                <img src="../pics/session-report.png" style="width: 150px;height: auto">
+            <a href="#session_report/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
+                <img src="pics/session-report.png" style="width: 150px;height: auto">
             </a>
 
-            <a href="#">
-                <img src="../pics/cognitive-report.png" style="width: 150px;height: auto">
+            <a href="#cognitive_report/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
+                <img src="pics/cognitive-report.png" style="width: 150px;height: auto">
 
             </a>
 
@@ -15,11 +21,11 @@
         </div>
 
         <div class="row">
-            <a href="#">
-                <img src="../pics/selfmeasu.png" style="width: 150px;height: auto">
+            <a href="#selfmeasurement_report/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
+                <img src="pics/selfmeasu.png" style="width: 150px;height: auto">
             </a>
-            <a href="#">
-                <img src="../pics/noncognitive-report.png" style="width: 150px;height: auto">
+            <a href="#noncognitive_report/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
+                <img src="pics/noncognitive-report.png" style="width: 150px;height: auto">
             </a>
         </div>
 

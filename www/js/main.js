@@ -1,5 +1,5 @@
 var utils = {
-	baseUrlApi: 'http://mentorinav3.staging.dpm.co.com',
+	baseUrlApi: 'http://staging.mentorina.com',
     headerTitle: '',
     pageTitle: '',
     idUser: '',
@@ -7,7 +7,8 @@ var utils = {
     userName: '',
     courses: [],
     allCourses: [],
-	_token: ''
+	_token: '',
+    test: ''
 };
 
 require.config({
