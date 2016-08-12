@@ -1,15 +1,14 @@
-
 <div class="row" style="margin-top: 100px">
     <div class="col-md-12" style="position: static">
         <div class="card" style=" display: inline">
-            <ul class="nav nav-tabs" role="tablist"
-                style="background-color:transparent; box-shadow: -2px -2px 2px #E0E0E0; ">
-                <li role="presentation" class="active" style="width: 50%"><a href="#CURRENT" aria-controls="current"
-                                                                             role="tab"
-                                                                             data-toggle="tab">CURRENT</a></li>
-                <li role="presentation" style="width: 50%"><a href="#PAST" aria-controls="PAST" role="tab"
-                                                              data-toggle="tab">PAST</a></li>
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active" style="width: 50%"><a id="current" role="tab" data-toggle="tab">Current</a></li>
+                <li ><a role="tab" data-toggle="tab">Past</a></li>
+
+
             </ul>
+            </li>
         </div>
     </div>
 </div>
@@ -36,7 +35,7 @@
 
                     <p id="prof_name"
                        style="color: #134b6d;font-size: 10px; margin-top: 10px;margin-left: 20px">
-                        <%= obj.teachers[0].meta_name%> <Br> </p>
+                        <%= obj.teachers[0].meta_name%> <Br></p>
 
                     <div style="margin-top: -90px;width: 80px;float: right">
 
@@ -48,7 +47,6 @@
                            style="color: #134b6d; font-size: 8.5px;padding: 1%;; ">
                             End Date <br> <span style="color: #4285F4;"><%= obj.updated_at %></span>
                         </p>
-
 
 
                     </div>

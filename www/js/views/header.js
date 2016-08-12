@@ -80,18 +80,7 @@ define([
                 this.$('#submitPlane').addClass('visibility-visible');
 
             }
-            else if (utils.pageTitle == 'Profile') {
 
-                this.$('#chevron-left-icon').addClass('visibility-hidden');
-                this.$('#menu-icon').addClass('visibility-visible');
-
-
-            } else if (utils.pageTitle !== 'Profile') {
-
-                this.$('#menu-icon').addClass('visibility-hidden');
-                this.$('#chevron-left-icon').addClass('visibility-visible');
-
-            }
             return this;
         }
     });

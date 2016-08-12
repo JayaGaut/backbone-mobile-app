@@ -102,7 +102,7 @@ define([
                         }
                     },
                     series: [{
-                        name: 'Student',
+                        name: sessionStorage.FirstName,
                         data: this.student_session_selfmeasurement
                     }, {
                         name: 'Class',

@@ -212,10 +212,11 @@ label {
 
 .back_btn {
     float: left;
-    margin-left: 8%;
+    margin-left: 0%;
     margin-top: 10px;
     color: white;
     cursor: pointer;
+    position: fixed;
 }
 
 .flex-rectangle {
@@ -429,5 +430,11 @@ ul {
     width: 150px;
     padding: 0.2%;
     margin-bottom: 15px;
+}
+
+.stroke-settings {
+    stroke: darkorange;
+    stroke-width: 5;
+    stroke-dasharray: 251.2,0;
 }
 

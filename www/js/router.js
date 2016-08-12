@@ -65,7 +65,6 @@ define([
 
             logout: function () {
                 //alert( "Handler for .click() called." );
-                $("#body").removeClass('menu-visible');
                 sessionStorage.clear();
                 $.ajax({
                     url: utils.baseUrlApi + "/logout",
@@ -74,7 +73,6 @@ define([
                     success: function (data) {
                         console.log(data);
                         window.location.hash = "";
-
                     },
 
                     error: function (xhr, status, error) {

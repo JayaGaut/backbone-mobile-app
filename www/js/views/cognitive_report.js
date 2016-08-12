@@ -4,10 +4,10 @@ define([
     'backbone',
     'router',
     'text!templates/cognitive_report_tpl.html'
-], function ($, _, Backbone,  Router, cognitiveReportTemplate) {
+], function ($, _, Backbone, Router, cognitiveReportTemplate) {
 
     var cognitiveReportView = Backbone.View.extend({
-        courseId :'',
+        courseId: '',
         courseName: '',
         teacherName: '',
         section: '',
@@ -26,7 +26,7 @@ define([
             var session_name = [];
             var class_session_cognitive = [];
             var student_session_cognitive = [];
-            var data = {courseId : this.courseId};
+            var data = {courseId: this.courseId};
             $.ajaxSetup({
                 xhrFields: {
                     withCredentials: true
@@ -34,7 +34,7 @@ define([
             });
 
             $.ajax({
-                url: utils.baseUrlApi + "/student/courses/"+data.courseId+"/reports",
+                url: utils.baseUrlApi + "/student/courses/" + data.courseId + "/reports",
                 dataType: "json",
                 type: "GET",
                 headers: {
@@ -71,44 +71,52 @@ define([
         },
 
         render: function () {
-            var info = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, sessions: this.sessions, section : this.section, outline : this.outline};
+            var info = {
+                courseId: this.courseId,
+                courseName: this.courseName,
+                teacherName: this.teacherName,
+                sessions: this.sessions,
+                section: this.section,
+                outline: this.outline
+            };
             var compiledTemplate = _.template(cognitiveReportTemplate);
             this.$el.html(compiledTemplate(info));
 
-            this.$('#con').highcharts({
-                chart: {
-                    type: 'line'
-                },
-                title: {
-                    text: 'Cognitive Skills ' + sessionStorage.FirstName + ' vs class'
-                },
-                subtitle: {
-                    text: ''
-                },
-                xAxis: {
-                    categories: this.session_name
-                },
-                yAxis: {
+                this.$('#con').highcharts({
+                    chart: {
+                        type: 'line'
+                    },
                     title: {
+                        text: 'Cognitive Skills ' + sessionStorage.FirstName + ' vs class'
+                    },
+                    subtitle: {
                         text: ''
-                    }
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
-                },
-                series: [{
-                    name: 'Student',
-                    data: this.student_session_cognitive
-                }, {
-                    name: 'Class',
-                    data: this.class_session_cognitive
-                }]
-            });
+                    },
+                    xAxis: {
+                        categories: this.session_name
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: sessionStorage.FirstName,
+                        data: this.student_session_cognitive
+                    }, {
+                        name: 'Class',
+                        data: this.class_session_cognitive
+                    }]
+                });
+
 
             return this;
         }
