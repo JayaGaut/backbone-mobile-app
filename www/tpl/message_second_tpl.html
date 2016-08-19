@@ -1,24 +1,39 @@
-<div style="margin-top:43px" class="border-bottom-dotted-gray padding-bottom-10px">
-    <div class="img-message">
-                <img class="img-circle thumbnail" src="pics/student.jpg" height="47px" width="47px" />
+<div class="row back" >
+    <a href="#messages">
+        <i id="back_btn" class="fa fa-angle-left fa-2x back_btn" aria-hidden="true" style="position:fixed"></i>
+    </a>
+</div>
+<div style="margin-left: 30px">
+
+    <img src="../img/DianaSiegler.jpg" class="img-circle" width="70" height="66" style="margin-top:30px;">
+    <div style="float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
+        <p style="font-size: 12px;"><%= sender_name %> </p>
+        <p class="date" style="color: #E0E0E0; font-size: 10px;margin-top: 5%"><%= sentDate %><BR> 2 Hours ago</p></div>
+</div>
+
+
+<ul style="margin-top: 10px;">
+
+    <li style="margin-left: -50px;">
+
+        <div class="card" style="height: 30%;width: 80%;margin-left:auto;margin-right: auto;display: block;margin-top:50px">
+            <div class="card-block" style="margin-top: 10px">
+
+                <p class="card-text" id="course_details"
+                   style="font-size: 12px;border-radius:8px;width: 100%; padding:2%; margin-top:5%;line-height: 150%;">
+                    <%= subject %>
+                    <%= content %>
+                </p>
             </div>
 
-    <div class="message-info">
-                <span id="remove-measure-btn" class="remove-measure-btn color-2b7dbc font-size-14px font-bold"> <%= sender_name %><%= sender_id %> </span>
-                <br />
-                <span class="color-525252 font-size-12px font-bold"> <%= subject %> </span>
-                <br />
-                <div class="color-525252 font-size-11px font-italic">
-                    <span> <%= sentDate %> </span>
-                </div>
-            </div>       
-</div>
 
-<div class="message-text">
-    <span>
-       <%= content %>
-    </span>
-</div>
-<a href="#message_reply/<%= sender_id %>/<%= subject %>">
-    <button class="do-action btn-reply"> REPLY </button>
-</a>
+        </div>
+
+        <a href="#message_reply/<%= sender_id %>/<%= subject %>/<%= content %>"><button type="button" class="btn btn-primary" style="margin-left:40px;margin-top: 60px">Reply</button></a>
+
+    </li>
+
+</ul>
+
+
+

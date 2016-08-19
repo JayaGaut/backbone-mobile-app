@@ -86,6 +86,8 @@ define([
                     chart: {
                         type: 'line'
                     },
+                    colors: ['#6FB3E0', '#87B87F'],
+
                     title: {
                         text: 'Cognitive Skills ' + sessionStorage.FirstName + ' vs class'
                     },

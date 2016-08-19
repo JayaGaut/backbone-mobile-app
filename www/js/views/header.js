@@ -13,46 +13,10 @@ define([
     var headerView = Backbone.View.extend({
         router: {},
         events: {
-            "click #submitPlane": "onClickSubmit",
             "click #trash-icon": "deleteIcon",
-            <!--"click #alert-delete": "alertAelete",-->
             "click #menu-icon": "displayMenu",
-            /*"click #close-menu": "closeMenu"*/
-            "click #back_btn": "back",
         },
         initialize: function () {
-        },
-        // back: function () {
-        //     if (utils.pageTitle == "courseDetail") {
-        //         window.location.hash = "courses";
-        //     } else if (utils.pageTitle == "personalizedReport") {
-        //     } else if (utils.pageTitle == "sessionReport") {
-        //         window.location.hash = "personalized";
-        //     } else if (utils.pageTitle == "sessionReportDetail") {
-        //         window.location.hash = "session_report";
-        //     }
-        //
-        // },
-
-        deleteIcon: function () {
-            console.log("clickDeleteButton");
-        },
-
-        onClickSubmit: function () {
-            console.log("clicked submit");
-            console.log($('#messageContent').val());
-            console.log($('#subject').val());
-            MessageModelInst = new MessageModel();
-            MessageModelInst.set({
-                '_token': sessionStorage._token,
-                'to': $('#to').val(),
-                'cc': $('#to').val(),
-                'bcc': '',
-                'subject': $('#subject').val(),
-                'content': '<p>' + $('#messageContent').val() + '</p>'
-            });
-            console.log(MessageModelInst.toJSON());
-            MessageModelInst.save();
         },
 
 
@@ -65,6 +29,10 @@ define([
                 || utils.pageTitle == 'sessionReportDetail') {
                 this.$('#back_btn').removeClass('visibility-hidden');
 
+            }
+
+            if( utils.pageTitle == 'MessageReply' || utils.pageTitle == 'MessageSelectSender'){
+                this.$('#flex-rectangle').addClass('visibility-hidden');
             }
 
             if (utils.pageTitle == 'Message') {

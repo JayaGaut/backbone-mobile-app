@@ -1,16 +1,34 @@
-directory.PeopleFirstView = Backbone.View.extend({
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router',
+    'text!templates/people_first_tpl.html'
+], function($, _, Backbone, Router, peopleFirstTemplate){
 
-    initialize: function () {
-        console.log('Initializing PeopleFirstView View');
-        utils.pageTitle = 'PeopleFirst';
-        utils.headerTitle = 'PEOPLE';
-        
-        
-    },
+    var peopleFirstView = Backbone.View.extend({
 
-    render: function () {
-        $(this.el).find("#remove-measure-btn").hide();
-        $(this.el).html(this.template());
-        return this;
-    },
+        router: {},
+        events: {},
+        initialize: function () {
+            utils.pageTitle = 'peopleFirst';
+            utils.headerTitle = 'PEOPLE';
+            $.ajaxSetup({
+                xhrFields: {
+                    withCredentials: true
+                },
+            });
+        },
+
+        render: function() {
+
+            var compiledTemplate = _.template( peopleFirstTemplate );
+            this.$el.html(compiledTemplate);
+
+            return this;
+        },
+    });
+
+    return peopleFirstView;
 });
+
