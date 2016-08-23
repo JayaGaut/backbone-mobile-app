@@ -1,20 +1,24 @@
-<div class="row back" >
+<div class="row back">
     <a href="#courses">
         <i id="back_btn" class="fa fa-angle-left fa-2x back_btn" aria-hidden="true"></i>
     </a>
 </div>
 <div class="container" style="margin-top: 20px">
-<ul >
+    <ul>
 
-    <li style="margin-left: -50px">
+        <li style="margin-left: -50px">
 
             <div class="card" style="height: 420px">
-                <div class="card-block" >
+                <div class="card-block">
                     <p class="card-text" id="subject2"><%= courseName %></p>
 
-                    <p id="prof_name" style="color: #134b6d;font-size:10px;float: left;font-weight: bold;margin-left: 10px">Professor: <%= teacherName
+                    <p id="prof_name"
+                       style="color: #134b6d;font-size:10px;float: left;font-weight: bold;margin-left: 10px">Professor:
+                        <%= teacherName
                         %> </p>
-                    <p id="section" style="color: #134b6d; font-size:10px;float: right;font-weight: bold;margin-right: 10px">Section: <%= section %> </p>
+                    <p id="section"
+                       style="color: #134b6d; font-size:10px;float: right;font-weight: bold;margin-right: 10px">Section:
+                        <%= section %> </p>
 
                     <hr style="width:100% ">
 
@@ -36,13 +40,14 @@
 
 
                     <div style="text-align: center; padding: 4%;padding-left: 2%; margin-top: 3%;">
-
-                        <i class="fa fa-file-text fa-2x" aria-hidden="true"
-                           style="color: #134b6d; float: left; margin-left: 0px"
-                           aria-hidden="true"><p
-                                style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center;font-family: sans-serif">
-                            My
-                            Files</p></i>
+                        <a href="#my_files">
+                            <i class="fa fa-file-text fa-2x" aria-hidden="true"
+                               style="color: #134b6d; float: left; margin-left: 0px"
+                               aria-hidden="true"><p
+                                    style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center;font-family: sans-serif">
+                                My
+                                Files</p></i>
+                        </a>
 
                         <a href="#personalized/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
                             <i class="fa fa-bar-chart fa-2x" aria-hidden="true" style="color: #134b6d;  "
@@ -50,17 +55,19 @@
                                     style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center; font-family:sans-serif ">
                                 Personalized <br> Report</p></i>
                         </a>
-                        <i class="fa fa-code-fork fa-2x" aria-hidden="true" style="color: #134b6d; float: right "
-                           aria-hidden="true"><p
-                                style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center; font-family: sans-serif">
-                            Adaptive <br>Learning</p></i>
+                        <a href="#adaptive_Learning_List">
+                            <i class="fa fa-code-fork fa-2x" aria-hidden="true" style="color: #134b6d; float: right "
+                               aria-hidden="true"><p
+                                    style="padding-top: 5px; color: #134b6d; font-size: small;text-align: center; font-family: sans-serif">
+                                Adaptive <br>Learning</p></i>
+                        </a>
                     </div>
                 </div>
-                </div>
-            </li>
+            </div>
+        </li>
 
 
-        </ul>
+    </ul>
 
 
-    </div>
+</div>

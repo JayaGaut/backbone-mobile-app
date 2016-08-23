@@ -79,6 +79,8 @@ define([
                     chart: {
                         type: 'line'
                     },
+                    colors: ['#6FB3E0', '#87B87F'],
+
                     title: {
                         text: 'Self Measures ' + sessionStorage.FirstName + ' vs class'
                     },

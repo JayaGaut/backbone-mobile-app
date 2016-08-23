@@ -17,7 +17,7 @@ define([
 			},
 			
 			events: {
-				"click #submitPlane": "onClickSubmit"
+				"click #sendMessage": "onClickSubmit",
 			},
 			
 	/*onClickSubmit: function(){
@@ -40,6 +40,25 @@ define([
 				MessageCollection.add(MessageModelInst);
 				window.location.hash = "messages";
 			},*/
+
+			onClickSubmit: function () {
+				console.log("clicked submit");
+				console.log($('#comment').val());
+				console.log($('#messageSubject').val());
+				console.log($('#to').val());
+				MessageModelInst = new MessageModel();
+				MessageModelInst.set({
+					'_token': sessionStorage._token,
+					'to': $('#to').val(),
+					'cc': $('#to').val(),
+					'bcc': '',
+					'subject': $('#messageSubject').val(),
+					'content': '<p>' + $('#comment').val() + '</p>'
+				});
+				console.log(MessageModelInst.toJSON());
+				MessageModelInst.save();
+				window.location.hash = "#messages";
+			},
 		
 			render: function () {
 				var data = { sender_id : this.sender_id, subject : this.subject};

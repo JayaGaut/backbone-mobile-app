@@ -1,25 +1,25 @@
-<div class="messageBackground">
-    <form action="">
-        <div class="boxInput">
-            <input id= "to" class="message-small-input" type="text" name="name" value="<%= sender_id %>"> 
-            <a href="#choosepeople" class="line-height-36px"><i class="fa fa-user-plus font-size-24px"></i></a>
-        </div>
-        <div class="boxInput">
-            <input id= "subject" class="message-small-input" type="text" name="Subject" value="<%= subject %>">
-        </div>
-        <div class="boxInput">
-            <textarea id= "messageContent" class="message-big-input" type="text" name="text" value=" "></textarea>
+<div class="col-md-12" style="width: 100%; height: 50px; background-color: #337ab7;margin-top: -50px;">
+    <div  style="width: 80%;margin-left: 60px;height: 30px;float: right;margin-top: 10px">
+        <input id="to" class="form-control" type="text" style="margin-top: -5px" title="send" value="<%= sender_id %>">
+        <a href="#message_select_sender">
+            <i class="fa fa-users fa-2x fa-users-profile" style="float:right;margin-right: 30px;margin-top: -35px"></i>
+        </a>
+    </div>
 
-        </div>
-    </form>
-   
+    <image src='../img/DianaSiegler.jpg' id='image_script' class='img-circle'></image>
+
+
 </div>
 
+<div class="col-md-12">
+
+    <div style="margin-top: 30px">
+
+        <input id="messageSubject" type="text" class="form-control" aria-label="..." placeholder= "subject" value="<%= subject %>">
+        <label for="comment" style="color:#4285F4;margin-top: 20px">Message:</label>
+        <textarea class="form-control" rows="5" id="comment" value=" "></textarea>
+        <button id="sendMessage" type="button" class="btn btn-primary" style="margin-top: 20px">Send</button>
+    </div>
 
 
-
-
-
-
-
-
+</div>

@@ -3,16 +3,16 @@ define([
     'underscore',
     'backbone',
     'router',
-    'text!templates/people_profile_tpl.html'
-], function($, _, Backbone, Router, peopleProfileTemplate){
+    'text!templates/discussion_main_tpl.html'
+], function($, _, Backbone, Router, discussionMainTemplate){
 
-    var peopleProfileView = Backbone.View.extend({
+    var discussionMainView = Backbone.View.extend({
 
         router: {},
         events: {},
         initialize: function () {
-            utils.pageTitle = 'peopleProfile';
-            utils.headerTitle = 'PEOPLE';
+            utils.pageTitle = 'discussionMain';
+            utils.headerTitle = 'DISCUSSION';
             $.ajaxSetup({
                 xhrFields: {
                     withCredentials: true
@@ -22,13 +22,13 @@ define([
 
         render: function() {
 
-            var compiledTemplate = _.template( peopleProfileTemplate );
+            var compiledTemplate = _.template( discussionMainTemplate );
             this.$el.html(compiledTemplate);
 
             return this;
         },
     });
 
-    return peopleProfileView;
+    return discussionMainView;
 });
 

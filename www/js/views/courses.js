@@ -13,7 +13,7 @@ define([
         events: {
             "click #past": "onClickPastCourses",
             "click #current": "onClickCurrentCourses",
-        },  
+        },
 
         initialize: function () {
             utils.pageTitle = 'My Courses';
@@ -33,6 +33,7 @@ define([
 
             var closure = this;
             var courses = [];
+            var status = 'past';
             $.ajax({
                 url: utils.baseUrlApi + "/student/courses?type=past",
                 dataType: "json",
@@ -51,7 +52,7 @@ define([
 
                     data.forEach(logArrayElements);
                     //console.log(closure.courses);
-                    closure.render();
+                    closure.render(status);
                 },
 
                 error: function (jqXHR, exception) {
@@ -72,6 +73,7 @@ define([
             console.log('courseIndex...');
             var closure = this;
             var courses = [];
+            var status = 'current';
             $.ajax({
                 url: utils.baseUrlApi + "/student/courses",
                 dataType: "json",
@@ -90,7 +92,7 @@ define([
 
                     data.forEach(logArrayElements);
                     //console.log(closure.courses);
-                    closure.render();
+                    closure.render(status);
                 },
 
                 error: function (jqXHR, exception) {
@@ -101,10 +103,15 @@ define([
 
         },
 
-        render: function () {
+        render: function (status) {
             // console.log(this.courses.length);
             var compiledTemplate = _.template(coursesTemplate);
             this.$el.html(compiledTemplate({courses: this.courses}));
+            if (status == "past") {
+                this.$('#past').css('color','#4285F4');
+            } else {
+                this.$('#current').css('color','#4285F4');
+            }
             return this;
         }
     });

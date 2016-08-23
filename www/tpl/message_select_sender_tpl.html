@@ -1,0 +1,55 @@
+<div class="col-md-12" style="width: 100%; height: 50px; background-color: #337ab7;margin-top: -50px;">
+
+    <div style="width: 80%;margin-left: 60px;height: 30px;float: right;margin-top: 10px">
+        <input id="message" class="form-control" type="text" title="send" style="margin-top: -5px">
+
+    </div>
+
+    <span style="float: left"></span>
+
+
+        <a href="#new_message">
+            <i class="fa fa-angle-left fa-2x back_btn" id="backbtn" aria-hidden="true"
+               style="color: white;position: fixed;display:inline"></i>
+        </a>
+</div>
+
+<div>
+
+
+    <input id="checkbox" type="checkbox" aria-label="close" class="checkbox-circle"
+           style="margin-top:30px;margin-left: 20px">
+    <img src="../img/DianaSiegler.jpg" id="image" class="img-circle" width="70" height="66" style="margin-top:30px;">
+    <div style="float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
+        <p id="user_name" style="font-size: 12px;">Stewart W Cieslak </p>
+    </div>
+</div>
+<hr width="100%">
+
+
+<script>
+
+    $('#checkbox').val($(this).is(':checked'));
+
+    $('#checkbox').change(function () {
+        if ($(this).is(":checked")) {
+            var $input = $(this);
+            var txt = document.getElementById("user_name").innerHTML;
+
+            $('#message').val(function (i, val) {
+                return val + txt;
+            });
+
+            $("#backbtn").addClass('visibility-hidden');
+
+            document.getElementById("message").innerHTML = "my content";
+            var user_image = $("<image src='../img/DianaSiegler.jpg' id='image_script' class='img-circle'></image>").insertBefore("span");
+
+        }
+        if ($(this).is(":checked")) {
+
+        }
+
+    });
+
+</script>

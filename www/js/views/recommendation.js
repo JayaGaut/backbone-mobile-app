@@ -11,6 +11,13 @@ define([
         events: {
         },
         initialize: function () {
+            utils.pageTitle = 'Recommendation';
+            utils.headerTitle = 'Recommendation';
+            $.ajaxSetup({
+                xhrFields: {
+                    withCredentials: true
+                },
+            });
         },
 
         render: function () {

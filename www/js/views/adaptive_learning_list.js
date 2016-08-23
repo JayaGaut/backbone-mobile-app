@@ -11,6 +11,8 @@ define([
         events: {
         },
         initialize: function () {
+            utils.pageTitle = 'AdaptiveLearning';
+            utils.headerTitle = 'Adaptive Learning';
         },
 
         render: function () {

@@ -18,7 +18,7 @@ define([
 		events: {},
 		initialize: function () {
 			utils.pageTitle = 'MessageSecond';
-		    utils.headerTitle = 'MESSAGESSECOND';
+		    utils.headerTitle = 'MESSAGES';
 			$.ajaxSetup({
 				xhrFields: {
 			    	withCredentials: true

@@ -21,7 +21,7 @@ define([
     		return Backbone.Model.prototype.sync.call(this, method, model, options);
 			
 	    },
-		urlRoot: "http://mentorina.staging.dpm.co.com/student/messages",
+		urlRoot: utils.baseUrlApi + "/student/messages",
 		defaults: {
 		_token: '',
 		to: '',

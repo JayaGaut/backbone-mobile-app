@@ -3,6 +3,12 @@
     border-radius: 0 !important;
 }
 
+/*font classes*/
+
+.font-20px {
+    font-size: 20px !important;
+}
+
 /*visibility-classes*/
 .visibility-hidden {
     visibility: hidden;
@@ -205,7 +211,7 @@ label {
 .back {
     height: 47px;
     width: 50px;
-    margin-left: 8%;
+    margin-left: 9%;
     margin-top: -49px;
     position: relative;
 }
@@ -438,3 +444,39 @@ ul {
     stroke-dasharray: 251.2,0;
 }
 
+
+#image_script {
+
+    width: 60px;
+    height: 45px;
+    position: fixed;
+    margin-top: 5px;
+    margin-left: -6px
+}
+
+.truncate {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.delete {
+    float: right;
+    position: fixed;
+    margin-left: 81%;
+    margin-top: 8px;
+    color: white;
+    font-size: 24px !important;
+    cursor: pointer;
+    position: fixed;
+}
+
+#plus {
+    float: left;
+    /*margin-left: 11.5%;*/
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+}
