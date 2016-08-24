@@ -4,16 +4,23 @@
     </a>
 </div>
 
-<a href="#people_profile">
-    <div>
+<ul>
+    <% _.each(people, function(obj) { %>
+    <li>
+        <a href="#people_profile ">
 
-        <img src="../img/DianaSiegler.jpg" id="image" class="img-circle" width="70" height="66"
-             style="margin-top:30px;">
-        <div style="float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
-            <p id="user_name" style="font-size: 12px;">Stewart W Cieslak </p>
-            <p style="font-size: 10px;color: #BDBDBD">Friends </p>
-        </div>
-    </div>
-</a>
-<hr width="100%">
+            <div style="z-index: -8">
+
+                <img src="http://staging.mentorina.com<%= obj.avatar.url%>" id="image" class="img-circle" width="70" height="66"
+                     style="margin-top:30px;margin-left: -14px">
+                <div style="z-index: -8;float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
+                    <p id="user_name" style="font-size: 12px;"> <%= obj.meta_name%> </p>
+                    <p style="font-size: 10px;color: #BDBDBD">Friends </p>
+                </div>
+            </div>
+        </a>
+        <hr width="100%">
+    </li>
+    <% });%>
+</ul>
 

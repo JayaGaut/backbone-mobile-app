@@ -27,19 +27,12 @@ define([
     'views/people_profile',
     'views/discussion_log',
     'views/discussion_main',
-<<<<<<< HEAD
     'views/my_files',
-=======
->>>>>>> d8c76c62761d1647b74beadc7e8245dcb7ac545f
     'models/message_model'
 ], function ($, _, Backbone, headerView, footerView, loginView, profileView, messagesView,
              messageView, messageSecondView, newMessageView, messageSelectSenderView, coursesView, courseDetailView, personalizedView, sessionReportView, sessionReportDetailView,
              adaptiveLearningListView, adaptiveLearningMapView, recommendationView, recommRelatedSessionView, cognitiveReportView, noncognitiveReportView,
-<<<<<<< HEAD
              selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, myFilesView, MessageModel) {
-=======
-             selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, MessageModel) {
->>>>>>> d8c76c62761d1647b74beadc7e8245dcb7ac545f
     var routerInst;
     var app_router = Backbone.Router.extend({
 
@@ -67,12 +60,8 @@ define([
             "people_first": "people_first",
             "people_profile": "people_profile",
             "discussion_log": "discussion_log",
-<<<<<<< HEAD
             "discussion_main": "discussion_main",
             "my_files": "my_files"
-=======
-            "discussion_main": "discussion_main"
->>>>>>> d8c76c62761d1647b74beadc7e8245dcb7ac545f
         },
 
         login: function () {
@@ -429,7 +418,8 @@ define([
 
         people_first: function () {
             peopleFirstViewInst = new peopleFirstView();
-            peopleFirstViewInst.render();
+            peopleFirstViewInst.peopleIndex();
+            // peopleFirstViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
             footerViewInst = new footerView();
@@ -485,7 +475,6 @@ define([
             $("#content").html(discussionMainViewInst.el);
             $('.footer').html(footerViewInst.el);
             $('.footer').show();
-<<<<<<< HEAD
         },
 
         my_files: function () {
@@ -501,8 +490,6 @@ define([
             $("#content").html(myFilesViewInst.el);
             $('.footer').html(footerViewInst.el);
             $('.footer').show();
-=======
->>>>>>> d8c76c62761d1647b74beadc7e8245dcb7ac545f
         }
     });
 
