@@ -1,25 +1,31 @@
-<div class="col-md-12" style="width: 100%; height: 50px; background-color: #337ab7;margin-top: -50px;">
-    <div  style="width: 80%;margin-left: 60px;height: 30px;float: right;margin-top: 10px">
-        <input id="to" class="form-control" type="text" style="margin-top: -5px" title="send" value="<%= sender_id %>">
+<div id="message_reply" class="col-md-12 reply"
+     style="width: 100%; height: 50px; background-color: #337ab7;position: fixed;margin-top: -10%">
+    <div style="width: 80%;margin-left: 60px;height: 30px;float: right;margin-top: 10px">
+        <input id="to" class="form-control" type="text"
+               style="margin-top: -5px;border-color: transparent;border-radius: 2px" title="send"
+               value="<%= sender_id %>">
         <a href="#message_select_sender">
-            <i class="fa fa-users fa-2x fa-users-profile" style="float:right;margin-right: 30px;margin-top: -35px"></i>
+            <i class="fa fa-users fa-2x " style="float:right;margin-right: 30px;margin-top: -30px"></i>
         </a>
     </div>
 
-    <image src='img/DianaSiegler.png' id='image_script' class='img-circle'></image>
+    <image src='../img/DianaSiegler.jpg' id='image_script' class='img-circle'></image>
 
 
 </div>
 
-<div class="col-md-12">
+<div id="padding" class="col-md-12" style="padding-top: 30px">
 
-    <div style="margin-top: 30px">
+    <div>
 
-        <input id="messageSubject" type="text" class="form-control" aria-label="..." placeholder= "subject" value="<%= subject %>">
+        <input id="messageSubject" type="text" class="form-control" style="border-color: #BDBDBD;color: #BDBDBD"
+               placeholder="subject" value="<%= subject %>">
         <label for="comment" style="color:#4285F4;margin-top: 20px">Message:</label>
-        <textarea class="form-control" rows="5" id="comment" value=" "></textarea>
+        <textarea style="border-color: #BDBDBD" class="form-control" rows="5" id="comment" value=" "></textarea>
         <button id="sendMessage" type="button" class="btn btn-primary" style="margin-top: 20px">Send</button>
+
     </div>
 
 
 </div>
+
