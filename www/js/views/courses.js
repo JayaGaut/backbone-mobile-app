@@ -85,13 +85,14 @@ define([
                     withCredentials: true,
                 },
                 success: function (data) {
+                    console.log(data.object);
                     closure.courses = [];
                     function logArrayElements(object, array) {
                         closure.courses.push(object);
                     }
 
                     data.forEach(logArrayElements);
-                    //console.log(closure.courses);
+                    // console.log(closure.courses);
                     closure.render(status);
                 },
 

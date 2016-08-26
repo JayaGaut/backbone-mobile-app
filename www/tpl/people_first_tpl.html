@@ -6,12 +6,13 @@
 
 <ul>
     <% _.each(people, function(obj) { %>
+    <% var avatar = "http://staging.mentorina.com" + obj.avatar.url; %>
     <li>
-        <a href="#people_profile ">
+        <a href="#people_profile/<%= obj.meta_name%> ">
 
             <div style="z-index: -8">
 
-                <img src="http://staging.mentorina.com<%= obj.avatar.url%>" id="image" class="img-circle" width="70" height="66"
+                <img src="<%= avatar%>" id="image" class="img-circle" width="70" height="66"
                      style="margin-top:30px;margin-left: -14px">
                 <div style="z-index: -8;float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
                     <p id="user_name" style="font-size: 12px;"> <%= obj.meta_name%> </p>
@@ -23,4 +24,3 @@
     </li>
     <% });%>
 </ul>
-

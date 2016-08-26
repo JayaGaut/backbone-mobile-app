@@ -7,6 +7,11 @@ define([
 ], function($, _, Backbone, Router, adaptiveLearningMapTemplate){
 
     var adaptiveLearningMapView = Backbone.View.extend({
+        courseId: '',
+        courseName: '',
+        teacherName: '',
+        section: '',
+        outline: '',
         router: {},
         events: {
         },
@@ -14,8 +19,9 @@ define([
         },
 
         render: function () {
+            var data = {courseId : this.courseId, courseName : this.courseName, teacherName : this.teacherName, section : this.section, outline : this.outline };
             var compiledTemplate = _.template( adaptiveLearningMapTemplate );
-            $(this.el).html(compiledTemplate);
+            $(this.el).html(compiledTemplate(data));
 
             return this;
         }

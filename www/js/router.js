@@ -28,11 +28,12 @@ define([
     'views/discussion_log',
     'views/discussion_main',
     'views/my_files',
+    'views/post',
     'models/message_model'
 ], function ($, _, Backbone, headerView, footerView, loginView, profileView, messagesView,
              messageView, messageSecondView, newMessageView, messageSelectSenderView, coursesView, courseDetailView, personalizedView, sessionReportView, sessionReportDetailView,
              adaptiveLearningListView, adaptiveLearningMapView, recommendationView, recommRelatedSessionView, cognitiveReportView, noncognitiveReportView,
-             selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, myFilesView, MessageModel) {
+             selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, myFilesView, postView, MessageModel) {
     var routerInst;
     var app_router = Backbone.Router.extend({
 
@@ -50,18 +51,19 @@ define([
             "personalized/:courseId/:courseName/:teacherName/:section/:outline": "personalized",
             "session_report/:courseId/:courseName/:teacherName/:section/:outline": "session_report",
             "session_report_detail/:courseId/:courseName/:teacherName/:section/:outline/:sessionId": "session_report_detail",
-            "adaptive_Learning_List": "adaptive_Learning_List",
-            "adaptive_Learning_Map": "adaptive_Learning_Map",
-            "recommendation": "recommendation",
+            "adaptive_Learning_List/:courseId/:courseName/:teacherName/:section/:outline": "adaptive_Learning_List",
+            "adaptive_Learning_Map/:courseId/:courseName/:teacherName/:section/:outline": "adaptive_Learning_Map",
+            "recommendation/:courseId/:courseName/:teacherName/:section/:outline": "recommendation",
             "recomm_Related_Session": "recomm_Related_Session",
             "cognitive_report/:courseId/:courseName/:teacherName/:section/:outline": "cognitive_report",
             "noncognitive_report/:courseId/:courseName/:teacherName/:section/:outline": "noncognitive_report",
             "selfmeasurement_report/:courseId/:courseName/:teacherName/:section/:outline": "selfmeasurement_report",
             "people_first": "people_first",
-            "people_profile": "people_profile",
+            "people_profile/:name": "people_profile",
             "discussion_log": "discussion_log",
             "discussion_main": "discussion_main",
-            "my_files": "my_files"
+            "my_files/:courseId/:courseName/:teacherName/:section/:outline": "my_files",
+            "post": "post"
         },
 
         login: function () {
@@ -293,8 +295,13 @@ define([
             $('.footer').show();
         },
 
-        adaptive_Learning_List: function () {
+        adaptive_Learning_List: function (courseId, courseName, teacherName, section, outline) {
             adaptiveLearningListViewInst = new adaptiveLearningListView();
+            adaptiveLearningListViewInst.courseId = courseId;
+            adaptiveLearningListViewInst.courseName = courseName;
+            adaptiveLearningListViewInst.teacherName = teacherName;
+            adaptiveLearningListViewInst.section = section;
+            adaptiveLearningListViewInst.outline = outline;
             adaptiveLearningListViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
@@ -308,8 +315,13 @@ define([
             $('.footer').show();
         },
 
-        adaptive_Learning_Map: function () {
+        adaptive_Learning_Map: function (courseId, courseName, teacherName, section, outline) {
             adaptiveLearningMapViewInst = new adaptiveLearningMapView();
+            adaptiveLearningMapViewInst.courseId = courseId;
+            adaptiveLearningMapViewInst.courseName = courseName;
+            adaptiveLearningMapViewInst.teacherName = teacherName;
+            adaptiveLearningMapViewInst.section = section;
+            adaptiveLearningMapViewInst.outline = outline;
             adaptiveLearningMapViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
@@ -323,8 +335,13 @@ define([
             $('.footer').show();
         },
 
-        recommendation: function () {
+        recommendation: function (courseId, courseName, teacherName, section, outline) {
             recommendationViewInst = new recommendationView();
+            recommendationViewInst.courseId = courseId;
+            recommendationViewInst.courseName = courseName;
+            recommendationViewInst.teacherName = teacherName;
+            recommendationViewInst.section = section;
+            recommendationViewInst.outline = outline;
             recommendationViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
@@ -432,8 +449,10 @@ define([
             $('.footer').show();
         },
 
-        people_profile: function () {
+        people_profile: function (name) {
             peopleProfileViewInst = new peopleProfileView();
+            peopleProfileViewInst.name = name;
+            // peopleProfileViewInst.avatar = avatar;
             peopleProfileViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
@@ -477,8 +496,13 @@ define([
             $('.footer').show();
         },
 
-        my_files: function () {
+        my_files: function (courseId, courseName, teacherName, section, outline) {
             myFilesViewInst = new myFilesView();
+            myFilesViewInst.courseId = courseId;
+            myFilesViewInst.courseName = courseName;
+            myFilesViewInst.teacherName = teacherName;
+            myFilesViewInst.section = section;
+            myFilesViewInst.outline = outline;
             myFilesViewInst.render();
             headerViewInst = new headerView();
             headerViewInst.render();
@@ -490,7 +514,23 @@ define([
             $("#content").html(myFilesViewInst.el);
             $('.footer').html(footerViewInst.el);
             $('.footer').show();
-        }
+        },
+
+        post: function () {
+            postViewInst = new postView();
+            postViewInst.render();
+            headerViewInst = new headerView();
+            headerViewInst.render();
+            footerViewInst = new footerView();
+            footerViewInst.render();
+
+
+            $('.header').html(headerViewInst.el);
+            $('.header').show();
+            $("#content").html(postViewInst.el);
+            $('.footer').html(footerViewInst.el);
+            $('.footer').show();
+        },
     });
 
     var initialize = function () {

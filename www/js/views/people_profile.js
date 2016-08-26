@@ -4,13 +4,15 @@ define([
     'backbone',
     'router',
     'text!templates/people_profile_tpl.html'
-], function($, _, Backbone, Router, peopleProfileTemplate){
+], function ($, _, Backbone, Router, peopleProfileTemplate) {
 
     var peopleProfileView = Backbone.View.extend({
-
+        name: '',
+        avatar: '',
         router: {},
         events: {},
         initialize: function () {
+            console.log("peopleeeeeeee");
             utils.pageTitle = 'peopleProfile';
             utils.headerTitle = 'PEOPLE';
             $.ajaxSetup({
@@ -20,10 +22,11 @@ define([
             });
         },
 
-        render: function() {
-
-            var compiledTemplate = _.template( peopleProfileTemplate );
-            this.$el.html(compiledTemplate);
+        render: function () {
+            var info = {name: this.name, avatar: this.avatar};
+            console.log(info);
+            var compiledTemplate = _.template(peopleProfileTemplate);
+            this.$el.html(compiledTemplate(info));
 
             return this;
         },

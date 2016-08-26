@@ -1,21 +1,21 @@
-<div class="row back" >
-    <a href="#course_detail">
+<div class="row back">
+    <a href="#course_detail/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
         <i id="back_btn" class="fa fa-angle-left fa-2x back_btn" aria-hidden="true"></i>
     </a>
 </div>
 
-<div class="row" style="display: block;text-align: center ">
+
+<div class="container" style="display: block;text-align: center ">
 
     <ul>
         <li style="margin-left: -30px;">
-            <a href="#adaptive_Learning_Map">
+            <a href="#adaptive_Learning_Map/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
 
                 <p class="date" id="End_date"
                    style="color: #BDBDBD;float: right; font-size: 12px;padding: 3%; ">2016-06-30</p>
 
 
-                <div id="subject" style="text-align: center; background-color: darkorange;color: white"><p>Activity 1
-                    &nbsp </p></div>
+                <div id="recommendation" style="float: left;"><p>Activity 1 &nbsp </p></div>
                 <br>
 
 
@@ -24,7 +24,8 @@
         </li>
 
     </ul>
-    <a href="#recommendation">
+
+    <a href="#recommendation/<%= courseId %>/<%= courseName %>/<%= teacherName %>/<%= section %>/<%= outline %>">
         <button type="button" class="btn btn-primary btn-sm">Recommendations</button>
     </a>
     <div>
@@ -34,5 +35,6 @@
             <text x="8" y="15" font-family="sans-serif" font-size="10px" fill="white">2</text>
         </svg>
     </div>
-</div>
 
+
+</div>
