@@ -1,75 +1,59 @@
-<div class="container container-table">
-    <div class="row vertical-center-row">
-        <div id="post" class="col-md-6 col-md-offset-3">
-
-            <ul id="message" style="list-style-type: none">
-                <li>
-                    <div class="card" style="height:500px;margin-left: -40px">
-                        <img src="../img/DianaSiegler.jpg" class="img-circle" width="40" height="36">
-                        <div style="float: right;position:absolute;display: inline-block;margin-right: 100px;margin-left: 20px">
-                            <p style="font-size: 10px;">Stewart W Cieslak </p>
-
-                            <p class="date" style="color: #E0E0E0; font-size: 10px;">12:39 PM</p></div>
-
-                        <div style="background-color: #F5F5F5;width: 100%;margin-left: auto;margin-right: auto;margin-top: 20px">
-
-                            <p style="padding: 2%;font-size: 10.5px"> Lorem Ipsum is simply dummy text of the printing
-                                and
-                                typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                                took a
-                                galley <span
-                                        style="color: #4285F4; margin-top: 2%">Read More</span></p>
-                            <img class="post_img" src="img/home-office.png"
-                                 style="width:90%;height: 200px;margin-left: auto;margin-right: auto;display: block;margin-top: -10px">
-                            <span id="comment" style="color: #4285F4; float: left;margin-left: 10px;font-size: 10px;margin-top: 10px">Comment</span>
-                            <span style="color: #4285F4; float: right;margin-right:10px;font-size: 10px;margin-top: 10px">Save <i
-                                    class="fa fa-star" aria-hidden="true" style="color: #BDBDBD;"></i></span>
+<div class="col-md-12" style="width: 100%; height: 50px; background-color: #337ab7;margin-top: -50px;">
 
 
-                        </div>
-                        <div id="comment_log" style="display:none;margin-top:20px;position:relative; ">
+    <div style="width: 80%;margin-left: 60px;height: 30px;float: right;margin-top: 10px">
+        <input id="message" class="form-control" type="text" title="send" style="margin-top: -5px">
 
-                            <div class="col-md-6" style="position: fixed">
-
-                                <img id="comment_image" src="img/DianaSiegler.png" class="img-circle" width="40"
-                                     height="36"
-                                     style="margin-top: 10px;float: left;">
-
-                                <div class="rectangle"
-                                     style="width: 70%;height: 10px;margin-left: 50px;margin-top: 10px;">
-                                    <input class="form-control" type="text" title="send">
-                                    <p style="float: right;margin-top: -25px;color: #4285F4;margin-right: 10px">SEND</p>
-                                </div>
-
-                            </div>
-
-                            <div style="margin-top: 20px;position: fixed">
-                                <ul>
-
-                                    <li>
-                                        <img src="img/DianaSiegler.png" class="img-circle" width="40"
-                                             height="36"
-                                             style="margin-top: 40px;float: left;margin-left: -30px">
-                                        <p id="comment_list" style="margin-top: 50px; "> User Name <span style="color: #757575">Comment</span></p>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
     </div>
-</div>
 
+    <span style="float: left"></span>
+
+
+    <a href="#new_message">
+        <i class="fa fa-angle-left fa-2x back_btn" id="backbtn" aria-hidden="true"
+           style="color: white;position: fixed;display:inline"></i>
+    </a>
+</div>
+<ul>
+    <li>
+        <div>
+
+
+            <input id="checkbox" type="checkbox" aria-label="close" class="checkbox-circle"
+                   style="margin-top:30px;margin-left: -25px">
+            <img src="../img/DianaSiegler.jpg" id="image" class="img-circle" width="70" height="66"
+                 style="margin-top:30px;">
+            <div style="float: right;position:absolute;display: inline-block;margin-right: 100px;margin-top: 60px;margin-left: 20px">
+                <p id="user_name" style="font-size: 12px;">Stewart W Cieslak </p>
+            </div>
+        </div>
+        <hr width="100%">
+    </li>
+</ul>
 
 <script>
-    $("#comment").click(function () {
-        $("#comment_log").toggle();
+
+    $('#checkbox').val($(this).is(':checked'));
+
+    $('#checkbox').change(function () {
+        if ($(this).is(":checked")) {
+            var $input = $(this);
+            var txt = document.getElementById("user_name").innerHTML;
+
+            $('#message').val(function (i, val) {
+                return val + txt;
+            });
+
+            $("#backbtn").addClass('visibility-hidden');
+
+            document.getElementById("message").innerHTML = "my content";
+            var user_image = $("<image src='../img/DianaSiegler.jpg' id='image_script' class='img-circle'></image>").insertBefore("span");
+
+        }
+        if ($(this).is(":checked")) {
+
+        }
+
     });
+
 </script>
