@@ -1,0 +1,33 @@
+<div id="firechat-wrapper">
+
+    <img id="img" src="../img/DianaSiegler.jpg" class="img-circle" width="40" height="46"
+         style="margin-top:20px;">
+
+
+</div>
+<script type="text/javascript">
+    // Initialize Firebase SDK
+    var config = {
+        apiKey: "AIzaSyDFlsisAa2yeDhRjSPdoC6Ez0UjOrSf9sc",
+        authDomain: "firechat-demo-app.firebaseapp.com",
+        databaseURL: "https://firechat-demo-app.firebaseio.com"
+    };
+    firebase.initializeApp(config);
+    // Get a reference to the Firebase Realtime Database
+    var chatRef = firebase.database().ref();
+    // Create an instance of Firechat
+    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+    // Listen for authentication state changes
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // If the user is logged in, set them as the Firechat user
+            chat.setUser(user.uid, "Anonymous" + user.uid.substr(10, 8));
+        } else {
+            // If the user is not logged in, sign them in anonymously
+            firebase.auth().signInAnonymously().catch(function (error) {
+                console.log("Error signing user in anonymously:", error);
+            });
+        }
+    });
+</script>
+

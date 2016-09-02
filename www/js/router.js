@@ -29,11 +29,12 @@ define([
     'views/discussion_main',
     'views/my_files',
     'views/post',
+    'views/test',
     'models/message_model'
 ], function ($, _, Backbone, headerView, footerView, loginView, profileView, messagesView,
              messageView, messageSecondView, newMessageView, messageSelectSenderView, coursesView, courseDetailView, personalizedView, sessionReportView, sessionReportDetailView,
              adaptiveLearningListView, adaptiveLearningMapView, recommendationView, recommRelatedSessionView, cognitiveReportView, noncognitiveReportView,
-             selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, myFilesView, postView, MessageModel) {
+             selfmeasurementReportView, peopleFirstView, peopleProfileView, discussionLogView, discussionMainView, myFilesView, postView, TestView, MessageModel) {
     var routerInst;
     var app_router = Backbone.Router.extend({
 
@@ -63,7 +64,8 @@ define([
             "discussion_log": "discussion_log",
             "discussion_main": "discussion_main",
             "my_files/:courseId/:courseName/:teacherName/:section/:outline": "my_files",
-            "post": "post"
+            "post": "post",
+            "test": "test"
         },
 
         login: function () {
@@ -528,6 +530,22 @@ define([
             $('.header').html(headerViewInst.el);
             $('.header').show();
             $("#content").html(postViewInst.el);
+            $('.footer').html(footerViewInst.el);
+            $('.footer').show();
+        },
+
+        test: function () {
+            TestViewInst = new TestView();
+            TestViewInst.render();
+            headerViewInst = new headerView();
+            headerViewInst.render();
+            footerViewInst = new footerView();
+            footerViewInst.render();
+
+
+            $('.header').html(headerViewInst.el);
+            $('.header').show();
+            $("#content").html(TestViewInst.el);
             $('.footer').html(footerViewInst.el);
             $('.footer').show();
         },
