@@ -4,7 +4,8 @@
     </a>
 </div>
 
-<div class="col-md-12">
+
+<div class="col-md-12" style="position:absolute;z-index:-7;margin-bottom: 40px">
     <div style="text-align: center;">
 
         <p style="color: #1f306e"> Tittle <span style="color: #4285F4"> Quiz Block</span></p>
@@ -12,7 +13,7 @@
 
 
     <div class="panel panel-default">
-        <div class="panel-heading" style="height: 40px">
+        <div class="panel-heading" style="height: 40px;">
 
             <p style="float:left;font-size: 10px">Computer Science</p>
             <p style="float:right;font-size: 10px;color:#337ab7 ">Initiated by: John does</p>
@@ -20,47 +21,86 @@
         </div>
         <div class="panel-body">
 
+            <div class="list-group" data-role="content">
+                <ul data-role="listview" id="messageList">
+                    <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+                </ul>
+            </div>
 
-            <ul id="message" style="list-style-type: none">
-                <a href="#test">
-                    <li>
-                        <div class="list-group">
-                            <input type="checkbox" aria-label="close" style="margin-top:30px;margin-left: -20px">
-                            <img src="../img/DianaSiegler.jpg" class="img-circle" width="40" height="46"
-                                 style="margin-top:20px;">
-                            <p style="font-size: 10px;">Stewart W Cieslak </p>
-                            <p class="list-group-item-text"
-                               style="font-size: 10.5px;background-color:#F5F5F5;border-radius:8px;padding: 1%; line-height: 150%">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has
-                                been the
-                                industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley
-                                of type
-                                and
-                                scrambled it to make a type specimen book.</p>
-
+            <div data-role="footer" data-theme="c">
+                <div class="ui-grid-a">
+                    <div class="mdl-textfield mdl-js-textfield" style="float: left">
+                        <input class="mdl-textfield__input" type="text" id="messageContent" placeholder="Your Message">
                         </div>
+                        <div class="ui-block-a"><a id="sendMessageButton" data-role="button">
+                            <button type="button" class="btn btn-primary btn-xs" style="margin-top: 10px;float: left">Send</button>
+                        </a></div>
 
-
-                    </li>
-                </a>
-            </ul>
-
-
+                </div>
+            </div>
         </div>
+
+
+    </div>
     </div>
 
-    <div class="col-md-12" style="width: 100%; height: 60px; background-color: #337ab7;margin-top: -20px">
+    <script>
+        $(document).ready(function () {
+// Initialize the PubNub API connection.
+            var pubnub = PUBNUB.init({
+                publish_key: 'pub-c-f8d11ec8-a715-466b-b240-cbad277e7864',
+                subscribe_key: 'sub-c-d0643816-7443-11e6-83fa-0619f8945a4f'
+            });
 
-        <div class=""
-             style="width: 80%;margin-left: 60px;height: 20px;float: right;margin-top: 10px">
-            <input class="form-control" type="text" title="send">
-            <p style="float: right;margin-top: -25px;color: #4285F4;margin-right: 10px;">SEND</p>
-        </div>
-        <li class="fo_icon" style="list-style-type: none"><i class="fa fa-paperclip fa-2x" aria-hidden="true"
-                                                             style="color:white;margin-top: -100px"></i>
-        </li>
-    </div>
+// Grab references for all of our elements.
+            var messageContent = $('#messageContent'),
+                    sendMessageButton = $('#sendMessageButton'),
+                    messageList = $('#messageList');
 
-</div>
+// Handles all the messages coming in from pubnub.subscribe.
+            function handleMessage(message) {
+                var messageEl = $("<li class='message'>"
+                                + '<input id="checkbox" type="checkbox" aria-label="close" style="margin-top:30px;margin-left: -20px">'
+                                + '<img src="../img/DianaSiegler.jpg" class="img-circle" width="40" height="46" style = "margin-top:20px;" > '
+                                + "<span class='username' style='color:#0e90d2'>" + message.username + ": </span>"
+                                + message.text
+                                +'<hr>'
+                                + "</li>"
+                        )
+                        ;
+                messageList.append(messageEl);
+
+// Scroll to bottom of page
+                $("html, body").animate({scrollTop: $(document).height() - $(window).height()}, 'slow');
+            };
+
+// Compose and send a message when the user clicks our send message button.
+            sendMessageButton.click(function (event) {
+                var message = messageContent.val();
+
+                if (message != '') {
+                    pubnub.publish({
+                        channel: 'chat',
+                        message: {
+                            username: 'test',//add user name from db
+                            text: message
+                        }
+                    });
+
+                    messageContent.val("");
+                }
+            });
+
+// Also send a message when the user hits the enter button in the text area.
+            messageContent.bind('keydown', function (event) {
+                if ((event.keyCode || event.charCode) !== 13) return true;
+                sendMessageButton.click();
+                return false;
+            });
+
+// Subscribe to messages coming in from the channel.
+            pubnub.subscribe({
+                channel: 'chat',
+                message: handleMessage
+            });
+        });</script>

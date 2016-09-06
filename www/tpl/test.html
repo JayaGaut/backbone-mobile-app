@@ -1,33 +1,50 @@
-<div id="firechat-wrapper">
-
-    <img id="img" src="../img/DianaSiegler.jpg" class="img-circle" width="40" height="46"
-         style="margin-top:20px;">
+<!--<div id="firechat-wrapper">-->
 
 
-</div>
-<script type="text/javascript">
-    // Initialize Firebase SDK
-    var config = {
-        apiKey: "AIzaSyDFlsisAa2yeDhRjSPdoC6Ez0UjOrSf9sc",
-        authDomain: "firechat-demo-app.firebaseapp.com",
-        databaseURL: "https://firechat-demo-app.firebaseio.com"
-    };
-    firebase.initializeApp(config);
-    // Get a reference to the Firebase Realtime Database
-    var chatRef = firebase.database().ref();
-    // Create an instance of Firechat
-    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-    // Listen for authentication state changes
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // If the user is logged in, set them as the Firechat user
-            chat.setUser(user.uid, "Anonymous" + user.uid.substr(10, 8));
-        } else {
-            // If the user is not logged in, sign them in anonymously
-            firebase.auth().signInAnonymously().catch(function (error) {
-                console.log("Error signing user in anonymously:", error);
-            });
-        }
+<!--</div>-->
+<!--<script type="text/javascript">-->
+    <!--// Initialize Firebase SDK-->
+    <!--var config = {-->
+        <!--apiKey: "AIzaSyDFlsisAa2yeDhRjSPdoC6Ez0UjOrSf9sc",-->
+        <!--authDomain: "firechat-demo-app.firebaseapp.com",-->
+        <!--databaseURL: "https://firechat-demo-app.firebaseio.com"-->
+    <!--};-->
+    <!--firebase.initializeApp(config);-->
+    <!--// Get a reference to the Firebase Realtime Database-->
+    <!--var chatRef = firebase.database().ref();-->
+    <!--// Create an instance of Firechat-->
+    <!--var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));-->
+    <!--// Listen for authentication state changes-->
+    <!--firebase.auth().onAuthStateChanged(function (user) {-->
+        <!--if (user) {-->
+            <!--// If the user is logged in, set them as the Firechat user-->
+            <!--chat.setUser(user.uid, "Anonymous" + user.uid.substr(10, 8));-->
+        <!--} else {-->
+            <!--// If the user is not logged in, sign them in anonymously-->
+            <!--firebase.auth().signInAnonymously().catch(function (error) {-->
+                <!--console.log("Error signing user in anonymously:", error);-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
+
+
+Chat Output
+<div id=box></div>
+
+Enter Chat and press enter
+<div><input id=input placeholder=you-chat-here /></div>
+
+
+<script>(function(){
+    var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
+    PUBNUB.subscribe({
+        channel  : channel,
+        callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
     });
-</script>
-
+    PUBNUB.bind( 'keyup', input, function(e) {
+        (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
+            channel : channel, message : input.value, x : (input.value='')
+        })
+    } )
+})()</script>

@@ -3,7 +3,7 @@ define([
     'underscore',
     'backbone',
     'text!templates/test.html'
-], function($, _, Backbone, testTemplate) {
+], function ($, _, Backbone, testTemplate) {
 
     var TestView = Backbone.View.extend({
 
@@ -14,6 +14,8 @@ define([
             console.log('test..');
 
         },
+
+
         render: function () {
             var compiledTemplate = _.template(testTemplate);
             this.$el.html(compiledTemplate);
